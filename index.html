@@ -11,58 +11,61 @@
 
 </head>
 <body class="font-sm m-0 ">
-    <div class="flex flex-col gap-4 cover justify-center h-[100vh] item-center text-center z-10">
+    <div class="flex flex-col md:flex-row cover h-[80vh] item-center text-center z-10">
 
         <header class="flex cover justify-center h-100 item-center text-center z-10">
-            <div class="gap-4 m-10">
+            <div class="m-10">
                 <div>
                     <div class="relative h-[100vh] md:h-screen w-full overflow-hidden ">
-                        <img src="/images/pexels-lucaspezeta-1996163-removebg-preview.png" alt="images" class="w-full h-30 bg-red-100 rounded">
+                        <img src="/images/pexels-lucaspezeta-1996163-removebg-preview.png" alt="images" class="w-full h-70 bg-red-100 rounded">
                     </div>
                     </div>
                 </div>
                 <div class="inset-0 bg-black/50"></div>
+                <!-----------nav bar-------->
                 <nav class="absolute border border-transparent bg-red-300 z-10 flex justify-around item-center text-amber-600 p-6 md:p-4">
                     <img src="images\new-terraced-houses.jpg" alt="images"class="w-[50px] h-[50] rounded-md m-0">
 
-                    <div class="flex justify-evenly gap-20 py-4 px-3">
-                        <a href="/"><span class="font-bold text-center">Home</span></a>
-                        <a href="about.html"><span class="font-bold text-center ">About</span></a>
-                        <a href="contact.html"><span class="font-bold text-center">Contact</span></a>
-                        <a href="payment.html"><span class="font-bold text-amber-center">Payment </span></a>
+                    <div class="flex group-hover:scale-x-100 justify-evenly gap-20  py-4 px-3">
+                        <a href="/"><span class="font-bold hover:text-white text-center">Home</span></a>
+                        <a href="about.html"><span class="font-bold hover:text-white text-center ">About</span></a>
+                        <a href="contact.html"><span class="font-bold hover:text-white text-center">Contact</span></a>
+                        <a href="payment.html"><span class="font-bold hover:text-white text-amber-center">Payment </span></a>
 
                     </div>
                 </nav>
-                <div class=" item-center absolute font-xl m-20 z-10 flex left-0  flex-col justify-center items-center m-20  font-bold text-center h-md md:h-full p-4">
-                    <h1>Welcome to <span class="text-amber-800">Spothouse</span></h1><br>
-                    <p>Site for all</p>
+                <!--------welcome message-->
+                <div class="text-xl item-center absolute font-xl m-20 z-10 flex left-0  flex-col justify-center items-center m-20  font-bold text-center h-md md:h-full p-4">
+                    <h1 class="text-3xl md:text-5xl  l:text-7xl" >Welcome to <span class="text-amber-800">Spothouse</span></h1><br>
+                    <p class="text-2xl md:text-3xl">Site for all</p>
                 </div>
             </div>
         </header>
         <main>
             <!-------------hero section---->
-                <div class="flex border border-transparent bg-red-100 p-4 rounded-md mb-20 ">
-                    <div class=" items-center text-black text-center">
-                        <h1 class="text-5xl font-bold text-amber-700">sporthouse<span class=" font-bold"><br>Organisation</span></h1>
+                <div class="flex border border-transparent bg-red-100 p-4 rounded-md mb-20 m-5">
+                    <div class="gap-2 items-center text-black text-center">
+                        <h1 class="md:text-5xl text-3xl font-bold text-amber-700">Sporthouse<span class=" font-bold"><br>Organisation</span></h1>
                        <p class="text-xl font-semi-bold">We help you allocate houses of your <br>
                            standard in your intented Town 
-                        </p>
+                        </p><br>
                        <button class="mb-6 p-2 rounded border border-transparent bg-blue-700 text-white"><a href="about.html">Learn more</a></button>
                     </div>
 
-                        <img src="/images/modern-style-cottage-tiny-house-on-green-lawn-3d-render.jpg" alt="images" class="w-50 h-50 ">
+                        <img src="/images/modern-style-cottage-tiny-house-on-green-lawn-3d-render.jpg" alt="images" class="w-80 h-50 ">
                     
                 
                 </div>
             
         </main>
+        <!---------footer------>
         <footer>
             <nav>
-                <div class=" border border-transparent bg-red-300 flex justify-evenly gap-2 py-4 px-3">
-                        <a href="/"><span class="font-bold text-center">Home</span></a>
-                        <a href="about.html"><span class="font-bold text-center ">About</span></a>
-                        <a href="contact.html"><span class="font-bold text-center">Contact</span></a>
-                        <a href="payment.html"><span class="font-bold text-amber-center">Payment </span></a>
+                <div class=" border border-transparent bg-red-300 mb-20  text-amber-600 flex justify-evenly gap-2 py-4 px-3">
+                        <a href="/"><span class="font-bold hover:text-white text-center">Home</span></a>
+                        <a href="about.html"><span class="font-bold hover:text-white text-center ">About</span></a>
+                        <a href="contact.html"><span class="font-bold hover:text-white text-center">Contact</span></a>
+                        <a href="payment.html"><span class="font-bold hover:text-white text-amber-center">Payment </span></a>
 
                     </div>
             </nav>

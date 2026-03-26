@@ -13,6 +13,40 @@ by providing accurate location,direct communication with the Landlord
 standard of the house and price per month both in one place.
 
 ## Technology 
-.html
-.tailwind
-.vs code
+  html
+
+  tailwind
+
+  vs code
+
+## features
+ Search housesby location
+
+ View price andhouse standard
+
+ Contact landlords
+
+ ## Project structure
+
+ Index file
+
+ About file
+
+ Contact file
+
+ payment file
+
+ ## contribution
+
+ Anyone is permited to contribute to the
+ 
+  project by submiting pull request.
+
+  ## license
+  have used MIT license
+
+  ## Contact information
+
+  wanyamaderrick@gail.com
+
+
