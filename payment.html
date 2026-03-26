@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
 </head>
-<body>
+<body class="bg-red-100 m-0 font-sm">
     <div>
         <header>
             <div>
@@ -23,18 +23,18 @@
         </header>
         <main>
         <!-------payments-->
-        <div>
+        <div class="grid gap-4 m-10">
             <h2>Make payments</h2>
-            <form action="">
-                <input type="text" placeholder="Full Name"required>
-                <input type="email" placeholder="Email" required>
+            <form class="border border-transparent  rounded m-4">
+                <input type="text" placeholder="Full Name"required> <br>
+                <input type="email" placeholder="Email" required> <br>
                 <input type="number" placeholder="Amount (ksh)"required>
-                <select>
-                    <option value="payment method">select payment method</option>
+                <select class="grid">
+                    <option value="payment method"></option>
                     <option value="m-pesa">M-pesa</option>
                     <option value="card">Credit card</option>
-                </select>
-                <button><a href="submit">Pay Now</a></button>
+                </select> <br>
+                <button class="border p-2 border-transparent text-white rounded-md bg-blue-700"><a href="0745668544">Pay Now</a></button>
             </form>
         </div>
         </main>
