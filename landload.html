@@ -11,45 +11,52 @@
    <div class=" grid m-10  ">
     <form>
     <label>Landlord Name:</label>
-    <input type="Full Name" placeholder class="border border-black w-1/2"> <br>
+    <input type="Name" placeholder class="border border-black w-1/2"two names required> <br> <br>
     <label>Landlord Address:</label>
-    <input type="personal address" class="border border-black w-1/2"> <br>
+    <input type="number" class="border border-black w-1/2" required> <br> <br>
     <label>Landlord Email Address:</label>
-    <input type="email address"placeholder class="border border-black w-1/2"> <br>
+    <input type="email"placeholder class="border border-black w-1/2" required> <br> <br>
     <label>Date:</label>
-    <input type="date"placeholder class="border border-black w-1/2"> <br>
+    <input type="date"placeholder class="border border-black w-1/2" required> <br> <br>
    </div> 
    <div class="m-10">
     <label>Tenant Name:</label>
-    <input type="Full Name" placeholder class="border border-black w-1/2" > <br>
+    <input type="Name" placeholder class="border border-black w-1/2"two names required > <br> <br>
     <label>Tenant Address:</label>
-    <input type="Address" placeholder class="border border-black w-1/2"> <br>
+    <input type="number" placeholder class="border border-black w-1/2" required> <br> <br>
     <label>Tenant Email Address:</label>
-    <input type="Email Address" placeholder class="border border-black w-1/2"> <br>
+    <input type="Email" placeholder class="border border-black w-1/2" required> <br> <br>
     <label>Date:</label>
-    <input type="date"placeholder class="border border-black w-1/2">
+    <input type="date"placeholder class="border border-black w-1/2" required>
    </div>
    </form>
    <div class="m-10">
+    <form>
     <p>We are pleased to inform you tha your rental application for the lease of properties located
-        ____________________________________________has been reviewed and approved.
+        <input type="text">has been reviewed and approved.
     </p>
     <div class="m-10">
     <h2>Detail of the rent</h2>
-    <p>Rent start date:___________________________</p>
-    <p>Rent Terms:______________________________</p>
-    <p>Rent amount:______________</p>
+    <label for="">Rent start Date:</label>
+    <input type="Date" placeholder="Rent start date" required> <br> <br>
+    <label for="">Rent Terms:</label>
+    <input type="text" placeholder="Rent terms" required> <br> <br>
+    <label for="">Rent Amount:</label>
+    <input type="number" placeholder="Rent amount" required> <br>
     </div>
    </div>
+   </form>
    <div class="m-10">
     <p>Payment terms :
-        Fixed sum.due date
-        Month.Payment should be paid the last day of the month.
-        Week.payments should be made last day of the week. <br>
+        Fixed sum.due date <br>
+        Month.Payment should be paid the last day of the month. <br>
+        Week.payments should be made last day of the week. <br> <br>
 
-        Payment method:________________________. <br>
-        Security deposit (if any)____________________. <br>
-        Late fee (if any)___________________for________ days of dalay.
+       <label for="">Payment method:</label>
+       <input type="text"> <br> <br>
+       <label for="">Security deposit (if any):</label>
+       <input type="number"> <br> <br>
+        <label for="">Late fee (if any)</label> <input type="number">for <input type="number"> days of dalay.
     </p>
    </div>
    <div class="m-10">
@@ -58,12 +65,16 @@
     </p>
     <div class="mb-10">
     <p>
-        sincerely,<br>
-        Name:______________ <br>
-        Signature:________________ <br>
+        sincerely,<br> <br>
+        <label for="Name">Name</label>
+        <input type="text" placeholder="" required> <br> <br> 
+        <label for="">Signature</label>
+        <input type="sinature" placeholder="" required>
     </p>
     </div>
-    <button><a href="payment.html"></a></button>
+    <button class="border border-transparent bg-blue-600 text-white p-2"><a href="payment.html">submit</a></button> <br>
+    <button class="border border-transparent bg-blue-600 text-white p-2"><a href="tenants.html">Back</a></button>
+
    </div>
    
 </body>
