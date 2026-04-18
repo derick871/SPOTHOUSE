@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rent application form</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.tailwindcss.com" rel="stylesheet">
+    <script src="script.js"></script>
 
 </head>
 <body class="m-10">
@@ -58,7 +59,7 @@
             <input type="text"placeholder class="border border-black w-1/2"> <br><br>
             <label>Supervisor's phone Number:</label>
             <input type="Number"placeholder class="border border-black w-1/2"> <br><br>
-            <button id="btn" class="text-white m-10 bg-blue-600 rounded-[40%] hover:text-green-400 p-2 mt-4" onclick="alert('Application submitted!')">
+            <button id="btn" class="text-white m-10 bg-blue-600 rounded-[20%] hover:text-green-400 p-2 mt-4" onclick="alert('Application submitted!')">
                 <a href="landload.html">Submit</a>
             </button>
         </form>
@@ -67,7 +68,7 @@
             <form id="massage-form">
                 <label for="message" class="text-sm font-bold">Message:</label><br>
                 <textarea id="message" name="message" rows="4" cols="50" class="border border-black w-1/2"></textarea><br><br>
-                <button class="text-white m-10 bg-blue-600 rounded-[40%] hover:text-green-400 p-2 mt-4" onclick="alert('Message sent!')">
+                <button id="btn" class="text-white m-10 bg-blue-600 rounded-md hover:text-green-400 p-2 mt-4" onclick="alert('Message sent!')">
                     <a href="landload.html">Send Message</a>
                 </button>
             </form>
