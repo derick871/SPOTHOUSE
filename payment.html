@@ -1,47 +1,114 @@
-<!DOCTYPE html>
+<!DOCTYPE html> html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-      <script src="https://cdn.tailwindcss.com"></script>
-
-    <script src="script.js"></script>
-
+    <title>Spothouse | Secure Payment</title>
+    <script src="https://tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cloudflare.com">
 </head>
-<body class="m-0 font-sm">
-    <div>
-        <header>
-             <div class="grid border border-transparent bg-red-100 gap-4 m-10">
-                <div>
-                    <h2 class="text-amber-700">Terms and Conditions</h2>
-                    <p>Pay the deposit of 15% of the total monthy payment. <br>
-                        Money ones sent is not refundable. <br>
-                        A credit of 5% of the total monthly pay from the landload <br>
-                        for the connected tenants.
-                    </p>
-                </div>
-            <h2>Make payments</h2>
-            <form class="border border-transparent  rounded m-4">
-                <input type="text" placeholder="Full Name"required> <br><br>
-                <input type="email" placeholder="Email" required> <br><br>
-                <input type="number" placeholder="Amount"(ksh) required> <br><br>
-                <select class="grid">
-                    <label for="">Payment</label>
-                    <option value="payment method"></option>
-                    <option value="m-pesa">M-pesa</option>
-                    <option value="card">Credit card</option>
-                </select> <br><br>
-                <button class="border p-2 border-transparent text-white rounded-[40%] bg-blue-700" onclick="alert('Payment submitted!')">
-                    <a href="https://www.safaricom.co.ke">Pay Now</a>
-                </button>
-                <button class="border border-transparent rounded-[40%] bg-blue-600 text-white p-2" onclick="alert('Returning to contact page!')">
-                    <a href="landload.html">Back</a>
-                </button>
-            </form>
+<body class="bg-gray-100 font-sans antialiased">
+
+    <!-- Simple Nav -->
+    <nav class="bg-slate-900 text-white p-6 shadow-md">
+        <div class="max-w-5xl mx-auto flex justify-between items-center">
+            <div class="text-2xl font-bold text-yellow-500 tracking-tighter">SPOTHOUSE</div>
+            <a href="index.html" class="text-sm hover:text-yellow-500 transition"><i class="fas fa-arrow-left mr-2"></i>Back to Listings</a>
         </div>
-        </header>
-    </div>
-    
+    </nav>
+
+    <main class="max-w-5xl mx-auto py-12 px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <!-- Summary Column (Left) -->
+            <div class="lg:col-span-1 space-y-6">
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+                    <div class="bg-slate-900 p-4 text-white font-bold text-center">Booking Summary</div>
+                    <img src="https://unsplash.com" alt="Villa" class="h-40 w-full object-cover">
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold text-slate-800">Luxury Villa</h3>
+                        <p class="text-sm text-gray-500 mb-4"><i class="fas fa-map-marker-alt mr-2"></i>Kisumu, Kenya</p>
+                        
+                        <div class="border-t border-dashed border-gray-200 pt-4 space-y-2 text-sm">
+                            <div class="flex justify-between"><span>Monthly Rent</span><span class="font-semibold">Kshs 90,000</span></div>
+                            <div class="flex justify-between"><span>Service Fee</span><span class="font-semibold">Kshs 2,500</span></div>
+                            <div class="flex justify-between text-lg font-bold text-slate-900 border-t pt-2 mt-2">
+                                <span>Total Due</span><span>Kshs 92,500</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-yellow-50 border border-yellow-200 p-4 rounded-xl flex gap-3 items-start">
+                    <i class="fas fa-shield-alt text-yellow-600 mt-1"></i>
+                    <p class="text-xs text-yellow-800 leading-relaxed">Your payment is encrypted and secured by Spothouse Protected Pay. We never store your full card details.</p>
+                </div>
+            </div>
+
+            <!-- Payment Form Column (Right) -->
+            <div class="lg:col-span-2 bg-white rounded-2xl shadow-sm border border-gray-200 p-8">
+                <h2 class="text-2xl font-bold text-slate-800 mb-6">Payment Method</h2>
+                
+                <!-- Payment Tabs -->
+                <div class="flex gap-4 mb-8">
+                    <button class="flex-1 border-2 border-slate-900 p-4 rounded-xl text-center bg-slate-50 transition">
+                        <i class="fas fa-credit-card block text-xl mb-1 text-slate-900"></i>
+                        <span class="text-xs font-bold uppercase tracking-tight">Card</span>
+                    </button>
+                    <button class="flex-1 border-2 border-gray-100 p-4 rounded-xl text-center hover:bg-gray-50 transition">
+                        <i class="fas fa-mobile-alt block text-xl mb-1 text-green-600"></i>
+                        <span class="text-xs font-bold uppercase tracking-tight">M-Pesa</span>
+                    </button>
+                    <button class="flex-1 border-2 border-gray-100 p-4 rounded-xl text-center hover:bg-gray-50 transition">
+                        <i class="fas fa-university block text-xl mb-1 text-blue-600"></i>
+                        <span class="text-xs font-bold uppercase tracking-tight">Bank</span>
+                    </button>
+                </div>
+
+                <form class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Full Name on Card</label>
+                        <input type="text" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-slate-900 focus:border-transparent outline-none transition" placeholder="Derrick Wamyama">
+                    </div>
+                    
+                    <div class="relative">
+                        <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Card Number</label>
+                        <input type="text" class="w-full border border-gray-300 rounded-lg px-4 py-3 pr-12 outline-none focus:ring-2 focus:ring-slate-900" placeholder="0000 0000 0000 0000">
+                        <div class="absolute right-4 top-9 flex gap-1">
+                            <i class="fab fa-cc-visa text-gray-400 text-xl"></i>
+                            <i class="fab fa-cc-mastercard text-gray-400 text-xl"></i>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-gray-500 uppercase mb-1">Expiry Date</label>
+                            <input type="text" class="w-full border border-gray-300 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-slate-900" placeholder="MM / YY">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-gray-500 uppercase mb-1">CVV</label>
+                            <input type="text" class="w-full border border-gray-300 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-slate-900" placeholder="123">
+                        </div>
+                    </div>
+
+                    <div class="pt-6">
+                        <button type="button" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-4 rounded-xl shadow-lg shadow-slate-200 transition transform active:scale-95">
+                            Complete Secure Payment
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="text-center py-8 text-gray-400 text-xs">
+        <div class="flex justify-center gap-4 mb-4">
+            <i class="fab fa-cc-stripe text-2xl"></i>
+            <i class="fab fa-cc-paypal text-2xl"></i>
+            <i class="fab fa-cc-apple-pay text-2xl"></i>
+        </div>
+        <p>&copy; 2026 Spothouse Payment Gateway. All transactions are logged for security.</p>
+    </footer>
+
 </body>
 </html>
