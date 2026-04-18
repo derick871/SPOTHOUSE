@@ -47,23 +47,37 @@
                 </div>
             </div>
         </header>
-        <main>
-            <!-------------hero section----------->
-                <div class="flex border border-transparent bg-red-100 p-4 rounded-md mb-20 m-5">
-                    <div class="gap-2 items-center text-black text-center">
-                        <h1 class="md:text-4xl sm:text-2xl lg:text-5xl font-bold text-amber-700">Spothouse<span class=" font-bold"><br>Organisation</span></h1>
-                       <p class="sm:text-xl  md:text-2xl lg:text-3xl font-semi-bold">We help you allocate houses of your <br>
-                           standard in your intended Town 
-                        </p><br>
-                       <button id="btn" class="mb-6 p-2 rounded-[40%] border border-transparent bg-blue-700 text-white" onclick="alert('Learning more!')">
-                            <a href="about.html">Learn more</a>
-                        </button>
-                    </div>
-
-                        <img src="/images/modern-style-cottage-tiny-house-on-green-lawn-3d-render.jpg" alt="images" class="w-80 h-50 ">
-                    
+    <main id="discover" class="max-w-6xl mx-auto py-24 px-6">
+        <!-- About Organisation Section -->
+        <div class="bg-white rounded-[3rem] shadow-xl border border-slate-100 overflow-hidden flex flex-col md:flex-row items-center">
+            
+            <!-- Text Content -->
+            <div class="p-12 md:w-3/5 space-y-6">
+                <h2 class="text-4xl font-bold text-slate-900">
+                    Spothouse <span class="text-yellow-600 block">Organisation</span>
+                </h2>
+                <p class="text-lg text-slate-500 leading-relaxed">
+                    We help you allocate houses of your standard in your intended Town. 
+                    From luxury villas in Kisumu to modern apartments in Nairobi, we bridge 
+                    the gap between tenants and quality living.
+                </p>
                 
+                <div class="pt-4">
+                    <button onclick="window.location.href='about.html'" class="flex items-center gap-3 text-slate-900 font-bold hover:text-yellow-600 transition group">
+                        Learn more about our mission
+                        <i class="fas fa-arrow-right transition-transform group-hover:translate-x-2"></i>
+                    </button>
                 </div>
+            </div>
+
+             <!-- Image Content -->
+            <div class="md:w-2/5 h-full min-h-[400px]">
+                <img src="/images/modern-style-cottage-tiny-house-on-green-lawn-3d-render.jpg" alt="images" class="w-80 h-50">
+ 
+            </div>
+            
+        </div>
+    </main>
             
         </main>
         <!---------footer------>
