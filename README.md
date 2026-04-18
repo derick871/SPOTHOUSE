@@ -46,7 +46,7 @@ standard of the house and price per month both in one place.
 
   ## Contact information
 
-  Email: wanyamaderrick@gail.com
+  Email: wanyamaderrick4@gail.com
   Tel: +245745668544
   FB :Deroo Shakespare
 
