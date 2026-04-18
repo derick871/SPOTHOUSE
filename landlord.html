@@ -7,9 +7,10 @@
         <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
+    <div id="approve">
     <h2 class="text-center font-bold text-3xl">Rental Application Approval Letter</h2>
    <div class=" grid m-10  ">
-    <form>
+    <form id="landlord-form">
     <label>Landlord Name:</label>
     <input type="Name" placeholder class="border border-black w-1/2"two names required> <br> <br>
     <label>Landlord Address:</label>
@@ -19,7 +20,7 @@
     <label>Date:</label>
     <input type="date"placeholder class="border border-black w-1/2" required> <br> <br>
    </div> 
-   <div class="m-10">
+   <div class="m-10" id="tenant-details">
     <label>Tenant Name:</label>
     <input type="Name" placeholder class="border border-black w-1/2"two names required > <br> <br>
     <label>Tenant Address:</label>
@@ -48,16 +49,16 @@
    </div>
    </form>
    <div class="m-10">
-    <p>Payment terms :
+    <p id="payment-terms">Payment terms :
         Fixed sum.due date <br>
         Month.Payment should be paid the last day of the month. <br>
         Week.payments should be made last day of the week. <br> <br>
 
-       <label for="">Payment method:</label>
+       <label for="payment-method">Payment method:</label>
        <input type="text"> <br> <br>
-       <label for="">Security deposit (if any):</label>
+       <label for="security-deposit">Security deposit (if any):</label>
        <input type="number"> <br> <br>
-        <label for="">Late fee (if any)</label> <input type="number">for <input type="number"> days of dalay.
+        <label for="late-fee">Late fee (if any)</label> <input type="number" id="late-fee">for <input type="number" id="delay-days"> days of dalay.
     </p>
    </div>
    <div class="m-10">
@@ -72,11 +73,12 @@
         <label for="">Signature:</label>
         <input type="sinature" placeholder="" required>
     </p>
-        <button class="border border-transparent bg-blue-600 text-white p-2"><a href="payment.html">submit</a></button> <br><br>
+        <button id="btn" class="border border-transparent bg-blue-600 text-white p-2"><a href="payment.html">submit</a></button> <br><br>
 
     </div>
-    <button class="border border-transparent bg-blue-600 text-white p-2"><a href="tenants.html">Back</a></button>
+    <button id="btn" class="border border-transparent bg-blue-600 text-white p-2"><a href="tenants.html">Back</a></button>
 
+   </div>
    </div>
    
 </body>
