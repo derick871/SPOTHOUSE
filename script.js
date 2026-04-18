@@ -56,3 +56,36 @@ const house = new house({
     console.error('Error booking house:', error);
 });
 module.exports = house;
+
+
+
+  function makePayment() {
+    url="https://flutterwave.com"
+    FlutterwaveCheckout({
+      tx_ref: "SPOTHOUSE-" + Date.now(), // Unique transaction reference
+      amount: 92500, // Total amount from summary
+      currency: "KES",
+      payment_options: "card, mpesa, ussd",
+      customer: {
+        email: "wamyamaderrick4@gmail.com",
+        phone_number: "0745668544",
+        name: "Derrick Wamyama",
+      },
+      customizations: {
+        title: "Spothouse Rentals",
+        description: "Payment for Luxury Villa - Kisumu",
+        logo: "https://your-domain.com",
+      },
+      callback: function (data) {
+        console.log("Payment successful!", data);
+        alert("Payment Successful! Ref: " + data.transaction_id);
+        // Here you would typically redirect to a success page
+      },
+      onclose: function() {
+        // Handle what happens when the modal is closed
+        console.log("Payment cancelled.");
+      }
+    });
+  }
+
+
