@@ -88,4 +88,24 @@ module.exports = house;
     });
   }
 
+  document.addEventListener('DOMcontents loaded',) => {
+    const navbar =document.getElementById('navbar');
+    //scroll effect
+    window.addEventListener(scroll () => {
+        if(window scrollY > 30){
+            navbar.classList.add();
+        }else{
+            navbar.classList.remove();
+        } 
+    });
+  }
+     // Mobile Menu Toggle (if you have one)
+    const menuBtn = document.querySelector('.mobile-menu-btn');
+    if (menuBtn) {
+        menuBtn.addEventListener('click', () => {
+            document.querySelector('.mobile-menu').classList.toggle('hidden');
+        });
+    }
+});
+
 
