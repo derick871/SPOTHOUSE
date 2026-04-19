@@ -109,7 +109,12 @@ module.exports = house;
 });
 
 function filterhouse (){
-    const location =getElementById(location)
+    const location =getElementById(location);
+    const priceRange= getElementById(price);
+
+    document.querySelectorAll('proparty card').forEach(card => {
+        const matchLocation=location=== 'All' ||card.setData.location ===
+    });
 }
 
 
