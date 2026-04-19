@@ -108,4 +108,8 @@ module.exports = house;
     }
 });
 
+function filterhouse (){
+    const location =getElementById(location)
+}
+
 
