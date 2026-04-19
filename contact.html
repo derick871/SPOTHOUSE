@@ -17,31 +17,31 @@
         <header>
             <div class=" mt-0">
                 <!-- Navigation Container -->
-<nav class="fixed top-0 left-0 w-full z-[20] transition-all duration-300" id="navbar">
+<nav class="fixed mt-0 left-0 w-full z-[20]  transition-all duration-300" id="navbar">
     <div class="max-w-7xl mx-auto px-6 py-4">
         <!-- The Glass Card -->
-        <div class="bg-red-300 backdrop-blur-xl border border-slate-700/50 rounded-2xl px-6 py-3 flex justify-between items-center shadow-2xl shadow-black/20">
+        <div class="bg-slate-500 backdrop-blur-xl border border-slate-700/50 rounded-2xl px-6 py-3 flex justify-between items-center shadow-2xl shadow-black/20">
             
             <!-- Logo Section -->
             <div class="flex items-center gap-2 group cursor-pointer">
-                <div class="bg-red-300 p-2 rounded-lg group-hover:rotate-12 transition-transform">
+                <div class="bg-grey-300 p-2 rounded-lg group-hover:rotate-12 transition-transform">
                     <i class="fas fa-house-chimney text-white"></i>
                 </div>
                 <span class="text-xl font-black text-white tracking-tighter">SPOTHOUSE</span>
             </div>
 
             <!-- Desktop Links -->
-            <div class="hidden lg:flex items-center gap-1">
-                <a href="index.html" class="nav-link active">Home</a>
-                <a href="about.html" class="nav-link">About</a>
-                <a href="contact.html" class="nav-link">Contact</a>
-                <a href="tenants.html" class="nav-link">Tenant</a>
-                <a href="landload.html" class="nav-link">Landlord</a>
+            <div class=" lg:flex items-center gap-4 ">
+                <a href="index.html" class="nav-link font-bold text-white text-xl hover:text-slate-500 transition">Home</a>
+                <a href="about.html" class="nav-link font-bold text-white text-2xl hover:text-slate-500 transition">About</a>
+                <a href="contact.html" class="nav-link font-bold text-white text-2xl hover:text-slate-500 transition">Contact</a>
+                <a href="tenants.html" class="nav-link font-bold text-white text-2xl hover:text-slate-500 transition">Tenant</a>
+                <a href="landload.html" class="nav-link font-bold text-white text-2xl hover:text-slate-500 transition">Landlord</a>
                 
                 <!-- Vertical Divider -->
                  <div class="h-6 w-[1px] bg-red-300 mx-4"></div>
                    <!-- Payment CTA -->
-                <a href="payment.html" class="bg-red-300 hover:bg-white text-amber-700 px-6 py-2.5 rounded-xl font-bold text-xs uppercase tracking-widest transition-all shadow-lg shadow-amber-500/10">
+                <a href="payment.html" class="bg-slate-300 hover:bg-white text-amber-700 px-6 py-2.5 rounded-xl font-bold text-xs uppercase tracking-widest transition-all shadow-lg shadow-amber-500/10">
                     Pay Rent
                 </a>
             </div>
@@ -67,7 +67,7 @@
                             <h2 class="text-red-600 text-3xl font-bold">Luxury villa</h2>
                             <p id="location"><span class="text-2xl">Location</span>:Kisumu</p>
                             <p><span class="text-2xl">Standard</span >:4 bedrooms,swimming pool</p>
-                            <p id="price"><span class="text-2xl">Price</span>:Kshs 90,000/month</p>
+                            <p id><span class="text-2xl">Price</span>:Kshs 90,000/month</p>
                             <button class="border hover:text-green-500 border-black p-2 bg-blue-800 text-white rounded-md" onclick="alert('Booking submitted!')"><a href="tenants.html">Book Now</a></button>
                         </div>
                         <div>
@@ -123,7 +123,7 @@
                 <div class="m-10 border border-transparent  bg-red-100 rounded-md">
                     <h2 class="font-bold text-amber-900">Get in touch</h2>
                     <p>
-                        Have quations or want to list your properties? <br>
+                        Have questions or want to list your properties? <br>
                         You can reach to  us.
                     </p>
                     
@@ -134,7 +134,7 @@
                     
                     bg-blue-800 rounded-md text-white" onclick="alert('Application submitted!')">
                     
-                    <a href="">Apply Now</a></button>
+                    <a href="landlord.html">Check-Out</a></button>
                 </div>
                                  
                 </div>
@@ -144,7 +144,7 @@
         </main>
         <!-----footer---->
         <div>
-            <footer class="m-10">
+            <footer class="m-4 bg-slate-500 text-2m text-white">
                 
                <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
         <div class="footer-brand">
@@ -153,29 +153,28 @@
         </div>
 
         <div class=" relative flex items-center gap-2 text-md mb-4">
-            <h3 class="text-xs uppercase tracking-wider mb-5 font-semibold">pages</h3>
-            <ul>
+            <h3 class="text-xs uppercase tracking-wider mb-5 font-semibold text-amber-500" >pages:</h3>
+            <ul class="flex gap-4">
                 <li><a href="/index.html" class="hover:text-white transition-colors">Home</a></li>
                 <li><a href="/about.html"class="hover:text-white transition-colors">About</a></li>
                 <li><a href="/contact.html"class="hover:text-white transition-colors">Contact</a></li>
                 <li><a href="/tenants.html"class="hover:text-white transition-colors">Tenants</a></li>
                 <li><a href="/landlord.html"class="hover:text-white transition-colors">Landlord</a></li>
-                <li><a href="/payment.html"class="hover:text-white transition-colors">Payment</a></li>
             </ul>
         </div>
 
-        <div class="footer-column">
-            <h3>Platform</h3>
-            <ul>
+        <div class="footer-column flex mb-0">
+            <h3 class="font-bold text-amber-500">Platform:</h3>
+            <ul class="flex gap-2 ">
                 <li><a href="#"class="hover:text-white transition-colors">Features</a></li>
                 <li><a href="#"class="hover:text-white transition-colors">Pricing</a></li>
                 <li><a href="#"class="hover:text-white transition-colors">Security</a></li>
             </ul>
         </div>
 
-        <div class="footer-column">
+        <div class="footer-column  mt-0">
             <h3>Legal</h3>
-            <ul>
+            <ul class="flex">
                 <li><a href="#">Privacy Policy</a></li>
                 <li><a href="#">Terms</a></li>
             </ul>
@@ -184,12 +183,12 @@
         <div class="footer-newsletter">
             <h3>Stay Updated</h3>
             <form class="newsletter-form">
-                <input type="email" placeholder="Email Address">
+                <input type="email" placeholder="Demarco@gmail.com"><br><br>
                 <button type="submit">Subscribe</button>
             </form>
-            <h3 class="text-xs uppercase tracking-wider mb-3 font-semibold"></h3>>folow us:</h3>
-            <div class="border border-transparent bg-red-300 p-4 rounded-md">
-                        <p class="flex gap-2">visit us on:
+            <h3 class="text-xs uppercase tracking-wider mb-3 font-semibold"></h3>folow us:</h3>
+            <div class="border border-transparent  p-4 rounded-md">
+                        <p class="flex gap-2">
                             <i class="fa-brands fa-instagram" style="color: rgb(148, 56, 140);"><a href="https://www.instagram.com"></a></i> <br>
                             <i class="fa-brands fa-linkedin" style="color: rgb(99, 230, 190);"><a href="https://www.linkedin.com"></a></i> <br>
                             <i class="fa-brands fa-facebook" style="color: rgb(104, 99, 230);"><a href="https://www.facebook.com"></a></i><br>
@@ -199,7 +198,7 @@
         </div>
     </div>
 
-    <div class="footer-bottom">
+    <div class="footer-bottom flex">
         <div>
             <p class=" m-4 mb-6 text-blue-800">
                     Copyright;2026 spothouse.All rights reserved

@@ -17,17 +17,15 @@
         }
         
     .nav-link {
-        @apply px-4 py-2 text-[11px] font-bold uppercase tracking-[0.15em] text-slate-400 hover:text-white transition-all rounded-lg;
+        class=" px-4 py-2 text-[11px] font-bold uppercase tracking-[0.15em] text-slate-400 hover:text-white transition-all rounded-lg"
     }
     
     .nav-link.active {
         @apply text-yellow-500 bg-white/5;
     }
 
-    /* Floating effect on scroll */
-    .nav-scrolled {
-        @apply py-2; /* Shrinks the navbar slightly when scrolling */
-    }
+    /* Floating effect  */
+    .nav-scrolled {@apply py-2;}
     </style>
 
 
@@ -60,8 +58,8 @@
                 
                      <!-- Mobile Menu Icon -->
             <div class="md:hidden text-white text-2xl">
-                <i class="fas fa-bars"></i></div>
-             </div>
+                <i class="fas fa-bars"></i>
+             
                 
                 <!--------welcome message-->
                 <div class="text-xl md:item-center flexible item-center absolute font-xl m-20 z-20 flex left-0  flex-col justify-center items-center m-20  font-bold text-center h-md md:h-full p-4">
@@ -146,9 +144,9 @@
                 <input type="email" placeholder="Email Address">
                 <button type="submit">Subscribe</button>
             </form>
-            <h3 class="text-xs uppercase tracking-wider mb-3 font-semibold"></h3>>folow us:</h3>
-            <div class="border border-transparent bg-red-300 p-4 rounded-md">
-                        <p class="flex gap-2">visit us on:
+            <h3 class="text-xs uppercase tracking-wider mb-3 font-semibold"></h3>folow us:</h3>
+            <div class="border border-transparent  p-4 rounded-md">
+                        <p class="flex gap-2">
                             <i class="fa-brands fa-instagram" style="color: rgb(148, 56, 140);"><a href="https://www.instagram.com"></a></i> <br>
                             <i class="fa-brands fa-linkedin" style="color: rgb(99, 230, 190);"><a href="https://www.linkedin.com"></a></i> <br>
                             <i class="fa-brands fa-facebook" style="color: rgb(104, 99, 230);"><a href="https://www.facebook.com"></a></i><br>
