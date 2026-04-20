@@ -53,24 +53,21 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         try {
-            // simulate a successful database write
-            console.log("Sending to JSON Database:", payload);
-            
-            // Mocking the AJAX Call
-            await new Promise(resolve => setTimeout(resolve, 1000)); 
+         const response = await fetch('http://localhost:5503/applications', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+    });
 
-            alert(' Saved Successfully!');
-            
-        } catch (error) {
-            console.error("Data error:", error);
-            alert('Something went wrong. Please try again.');
-        } finally {
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = originalText;
-        }
+    if (response.ok) {
+        localStorage.removeItem(storageKey); // Clear draft after success
+        alert('Application Saved Successfully!');
+    }
+    } catch (error) {
+       console.error("Data error:", error);
+     }
     });
 });
-
 const name = document.getElementById('tenant-contact').value;
 const message = document.getElementById('message-form').value;
 console.log(`sending message from ${name}: ${message}`);
@@ -145,39 +142,29 @@ async function booking(title, standard, price, location) {
 
     // 3. AJAX Payment Submission
     window.makePayment = async function() {
-        const btn = document.getElementById('process-payment') || submitBtn;
-        
-        // Visual Loading State
-        btn.disabled = true;
-        btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Processing...';
-
-        const paymentData = {
-            amount: 92500,
-            currency: 'Kshs',
-            // Capture your input values here
-        };
-
-        try {
-            const response = await fetch('/api/process-payment', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(paymentData)
-            });
-
-            const result = await response.json();
-
-            if (result.success) {
-                alert('Payment Successful! Redirecting to dashboard...');
-                window.location.href = 'dashboard.html';
-            } else {
-                throw new Error('Payment declined');
-            }
-        } catch (error) {
-            alert('Payment failed. Please check your details and try again.');
-            btn.disabled = false;
-            btn.innerHTML = 'Complete Secure Payment';
-        }
+    // ... (Your loading state logic)
+    const paymentData = {
+        id: `TXN-${Date.now()}`,
+        amount: 92500,
+        currency: 'Kshs',
+        method: document.getElementById('phone') ? 'M-Pesa' : 'Card',
+        status: 'success'
     };
+
+    try {
+        const response = await fetch('http://localhost:5503/payments', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(paymentData)
+        });
+
+        if (response.ok) {
+            window.location.href = 'dashboard.html';
+        }
+    } catch (error) {
+        alert('Payment failed.');
+    }
+};
 
     // Link the original HTML button to the function
     submitBtn.onclick = makePayment;
@@ -228,7 +215,7 @@ async function booking(title, standard, price, location) {
 
 
 function filterhouse (){
-    const location =getElementById(location);
+    const location =getElementById('location,');
     const priceRange= getElementById(price);
 
     document.querySelectorAll('proparty card').forEach(card => {
