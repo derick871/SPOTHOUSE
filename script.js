@@ -3,11 +3,74 @@ contact.addEventListener('click', function() {
     alert('You clicked the contact section!');
 });
 
-const applicationForm = document.getElementById('application-form');
-applicationForm.addEventListener('submit', function(event) {
-    event.preventDefault();
-    alert('Application form submitted!');
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('rent-application-form');
+    const storageKey = 'spothouse_application_form';
+
+    // 1. AUTO-SAVE PROGRESS TO:(Local Storage)
+    form.addEventListener('input', () => {
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+        localStorage.setItem(storageKey, JSON.stringify(data));
+    });
+
+    // 2. LOAD EXISTING DATA
+    // If user refreshes or returns, refill the form
+    const savedData = JSON.parse(localStorage.getItem(storageKey));
+    if (savedData) {
+        Object.keys(savedData).forEach(key => {
+            const input = form.querySelector(`[name="${key}"]`);
+            if (input) input.value = savedData[key];
+        });
+    }
+
+    // 3. AJAX SUBMISSION
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        // Visual feedback
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerText;
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Saving Progress...';
+
+        const formData = new FormData(form);
+        const payload = {
+            application_id: `SH-${Date.now()}`,
+            timestamp: new Date().toISOString(),
+            personal_info: {
+                full_name: formData.get('full_name'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                dob: formData.get('dob'),
+                id_number: formData.get('id_passport')
+            },
+            residency: {
+                address: formData.get('address'),
+                city: formData.get('city'),
+                rent: formData.get('current_rent')
+            }
+        };
+
+        try {
+            // simulate a successful database write
+            console.log("Sending to JSON Database:", payload);
+            
+            // Mocking the AJAX Call
+            await new Promise(resolve => setTimeout(resolve, 1000)); 
+
+            alert(' Saved Successfully!');
+            
+        } catch (error) {
+            console.error("Data error:", error);
+            alert('Something went wrong. Please try again.');
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalText;
+        }
+    });
 });
+
 const name = document.getElementById('tenant-contact').value;
 const message = document.getElementById('message-form').value;
 console.log(`sending message from ${name}: ${message}`);
@@ -15,100 +78,154 @@ console.log(`sending message from ${name}: ${message}`);
 const feedback = document.getElementById('feedback-message');
 feedback.textContent = 'Message sent successfully!';
 async function booking(title, standard, price, location) {
-    url= 'https://www.originhomes.co.ke';
-    const response = await fetch('https://www.originhomes.co.ke', {
+    const url = 'http://localhost:5503/bookings'; // Using local JSON server
+    
+    const response = await fetch(url, {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ title, standard, price, location, })
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+            title, 
+            standard, 
+            price, 
+            location,
+            timestamp: new Date().toISOString() 
+        })
     });
-    const data = await response.json();
-    return data;
-    console.log('Booking data:', data);
-}
 
-
-if(overlappingbooking) {
-    alert('This house is already booked. Please choose different house.');
-} else {
-    const bookingResult = responsebooking(title, standard, price, location);
-    if (bookingResult.success) {
-        alert('House booked successfully!');
-    }
-}
-responsebooking(title, standard, price, location)
-const { kStringMaxLength } = require('buffer');
-const house =require('url');
-const house = new house({
-    title: {type: String, required: true},
-    standard: {type: String, required: true},
-    price: {type: Number, required: true},
-    location: {type: String, required: true},
-})
-
-.then(response => {
-    if (!response.success) {
-        throw new Error('Booking failed: ' + response.message);
-    }
-    return response.json(data);
-})
-.catch(error => {
-    console.error('Error booking house:', error);
-});
-module.exports = house;
+    if (!response.ok) throw new Error('Network response was not ok');
+    return await response.json();
+};
 
 
 
-  function makePayment() {
-    url="https://flutterwave.com"
-    FlutterwaveCheckout({
-      tx_ref: "SPOTHOUSE-" + Date.now(), // Unique transaction reference
-      amount: 92500, // Total amount from summary
-      currency: "KES",
-      payment_options: "card, mpesa, ussd",
-      customer: {
-        email: "wamyamaderrick4@gmail.com",
-        phone_number: "0745668544",
-        name: "Derrick Wamyama",
-      },
-      customizations: {
-        title: "Spothouse Rentals",
-        description: "Payment for Luxury Villa - Kisumu",
-        logo: "https://your-domain.com",
-      },
-      callback: function (data) {
-        console.log("Payment successful!", data);
-        alert("Payment Successful! Ref: " + data.transaction_id);
-        // Here you would typically redirect to a success page
-      },
-      onclose: function() {
-        // Handle what happens when the modal is closed
-        console.log("Payment cancelled.");
-      }
+  document.addEventListener('DOMContentLoaded', () => {
+    const payButtons = document.querySelectorAll('div.flex.gap-4.mb-8 button');
+    const formContainer = document.querySelector('form');
+    const submitBtn = document.querySelector('button[onclick="makepayment()"]');
+
+    // 1. Handle Payment Method Switching
+    payButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remove active style from all buttons
+            payButtons.forEach(b => {
+                b.classList.remove('border-slate-900', 'bg-slate-50');
+                b.classList.add('border-gray-100');
+            });
+
+            // Add active style to clicked button
+            btn.classList.add('border-slate-900', 'bg-slate-50');
+            btn.classList.remove('border-gray-100');
+
+            const method = btn.querySelector('span').innerText.toLowerCase();
+            updateFormUI(method);
+        });
     });
-  }
 
-  document.addEventListener(`('DOMcontents loaded',) => {
-    const navbar =document.getElementById('navbar')`);
-    //scroll effect
-    window.addEventListener(scroll () => {
-        if(window scrollY > 30){
-            navbar.classList.add();
+    // 2. Dynamic UI Update (payment)
+    function updateFormUI(method) {
+        if (method === 'm-pesa') {
+            formContainer.innerHTML = `
+                <div class="animate-fade-in">
+                    <label class="block text-xs font-bold text-gray-500 uppercase mb-1">M-Pesa Phone Number</label>
+                    <input type="text" id="phone" class="w-full border border-gray-300 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-slate-900" placeholder="0700 000 000">
+                    <p class="text-[10px] text-gray-400 mt-2">You will receive an STK Push on your phone.</p>
+                </div>
+                <div class="pt-6">
+                    <button type="button" id="process-payment" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-4 rounded-xl shadow-lg transition transform active:scale-95">
+                        Pay with M-Pesa
+                    </button>
+                </div>
+            `;
+        } else if (method === 'card') {
+             location.reload(); // Simplest way to revert to default card HTML
         }
-        else{
-            navbar.classList.remove();
-        } 
+        // Add listener back to the new dynamic button
+        document.getElementById('process-payment')?.addEventListener('click', makePayment);
+    }
+
+    // 3. AJAX Payment Submission
+    window.makePayment = async function() {
+        const btn = document.getElementById('process-payment') || submitBtn;
+        
+        // Visual Loading State
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Processing...';
+
+        const paymentData = {
+            amount: 92500,
+            currency: 'Kshs',
+            // Capture your input values here
+        };
+
+        try {
+            const response = await fetch('/api/process-payment', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(paymentData)
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                alert('Payment Successful! Redirecting to dashboard...');
+                window.location.href = 'dashboard.html';
+            } else {
+                throw new Error('Payment declined');
+            }
+        } catch (error) {
+            alert('Payment failed. Please check your details and try again.');
+            btn.disabled = false;
+            btn.innerHTML = 'Complete Secure Payment';
+        }
+    };
+
+    // Link the original HTML button to the function
+    submitBtn.onclick = makePayment;
+});
+
+
+ document.addEventListener('DOMContentLoaded', () => {
+    const navbar = document.getElementById('navbar');
+
+    // 1. Scroll Effect Logic
+    window.addEventListener('scroll', () => {
+        // Targets the inner glass card container inside your nav
+        const navContainer = navbar.querySelector('.max-w-7xl > div');
+
+        if (window.scrollY > 30) {
+            // Apply "Scrolled" state: Darker glass, smaller padding, and shadow
+            navContainer.classList.replace('bg-slate-500', 'bg-slate-900/90');
+            navContainer.classList.add('py-2', 'shadow-2xl', 'border-slate-600');
+            navContainer.classList.remove('py-3', 'border-slate-700/50');
+        } else {
+            // Revert to "Top" state: Lighter glass, more padding
+            navContainer.classList.replace('bg-slate-900/90', 'bg-slate-500');
+            navContainer.classList.add('py-3', 'border-slate-700/50');
+            navContainer.classList.remove('py-2', 'shadow-2xl', 'border-slate-600');
+        }
     });
-  }
-     // Mobile Menu Toggle (if you have one)
-    const menuBtn = document.querySelector('.mobile-menu-btn');
+
+    // 2. Mobile Menu Toggle
+    const menuBtn = document.querySelector('button.lg\\:hidden'); // Targets your mobile toggle
+    const navLinks = document.querySelector('.lg\\:flex'); // Desktop links container
+
     if (menuBtn) {
         menuBtn.addEventListener('click', () => {
-            document.querySelector('.mobile-menu').classList.toggle('hidden');
+            // Toggles visibility on mobile
+            navLinks.classList.toggle('hidden');
+            navLinks.classList.toggle('flex');
+            navLinks.classList.toggle('flex-col');
+            navLinks.classList.toggle('absolute');
+            navLinks.classList.toggle('top-20');
+            navLinks.classList.toggle('left-6');
+            navLinks.classList.toggle('right-6');
+            navLinks.classList.toggle('bg-slate-800');
+            navLinks.classList.toggle('p-6');
+            navLinks.classList.toggle('rounded-2xl');
         });
     }
 });
+
 
 function filterhouse (){
     const location =getElementById(location);
@@ -135,22 +252,28 @@ function handleImagePreview(input) {
     });
 }
 //function fetch and display dashbord data
-document.addEventListener('DOMContentLoaded',() =>
-async function refreshdashbord (){
-    let url= 'https://houselink360.com'
-    try{
-        const response= await fetch(url);
 
-        const data =await response.json();
+     //updates
+     async function refreshDashboard() {
+    let url = 'http://localhost:5503/dashboard';
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+
+        document.getElementById('first-revenue').innerText = `Kshs ${data.revenue.toLocaleString()}`;
+        document.getElementById('first-tenant').innerText = data.activeTenants;
+
+        const tableBody = document.getElementById('tenant-table');
+        tableBody.innerHTML = data.tenants.map(tenant => `
+            <tr>
+              <td>${tenant.name}</td>
+              <td>${tenant.property}</td>
+              <td><span class="status">${tenant.status}</span></td>
+            </tr>
+        `).join(''); // .join('')  remove commas between rows
+    } catch (error) {
+        console.error("An error occurred:", error);
     }
-    //updates
-     const firstRevenue= document.getElementById(first-revenue).innertext= `Kshs ${data.revenue.toLocaleString()}`;
-     const firstTenant= document.getElementById(first-tenant).innertext= data.activeTenant;
-
-     const tableBody= document.getElementById(tenant-table);
-     tenantBody.innerHTML= data.tenant.map(tenant =>
-        
-     )
-})
+}
 
 
