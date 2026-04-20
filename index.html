@@ -47,7 +47,7 @@
                 <!-- Navigation Bar -->
     <nav id="navbar" class="fixed top-0 w-full z-50 bg-slate-900/90 backdrop-blur-md border-b border-slate-800">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold text-yellow-500 tracking-tighter">SPOTHOUSE</div>
+            <div class="text-2xl font-bold text-amber-600 tracking-tighter">SPOTHOUSE</div>
             
             <div class="hidden md-hidden md:flex gap-8 text-sm font-bold uppercase tracking-widest text-gray-300">
                 <a href="/" class="text-white border-b-2 border-yellow-500 pb-1">Home</a>
@@ -70,38 +70,35 @@
                 </div>
             </div>
         </header>
-    <main id="discover" class="max-w-6xl mx-auto py-24 px-6">
-        <!-- About Organisation Section -->
-        <div class="bg-white rounded-[3rem] shadow-xl border border-slate-100 overflow-hidden flex flex-col md:flex-row items-center">
+    <main id="discover" class="max-w-6xl mx-auto py-10 px-4 md:px-6">
+    <div class="bg-white rounded-[2rem] md:rounded-[3rem] shadow-xl border border-slate-100 overflow-hidden flex flex-col md:flex-row items-stretch">
+        
+        <div class="p-8 md:p-12 md:w-3/5 flex flex-col justify-center space-y-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 leading-tight">
+                Spothouse <span class="text-yellow-600">Organisation</span>
+            </h2>
+            <p class="text-base md:text-lg text-slate-500 leading-relaxed">
+                We help you allocate houses of your standard in your intended Town. 
+                From luxury villas in Kisumu to modern apartments in Nairobi, we bridge 
+                the gap between tenants and quality living.
+            </p>
             
-            <!-- Text Content -->
-            <div class="p-12 md:w-3/5 space-y-6">
-                <h2 class="text-4xl font-bold text-slate-900">
-                    Spothouse <span class="text-yellow-600 block">Organisation</span>
-                </h2>
-                <p class="text-lg text-slate-500 leading-relaxed">
-                    We help you allocate houses of your standard in your intended Town. 
-                    From luxury villas in Kisumu to modern apartments in Nairobi, we bridge 
-                    the gap between tenants and quality living.
-                </p>
-                
-                <div class="pt-4">
-                    <button onclick="window.location.href='about.html'" class="flex items-center gap-3 text-slate-900 font-bold hover:text-yellow-600 transition group">
-                        Learn more about our mission
-                        <i class="fas fa-arrow-right transition-transform group-hover:translate-x-2"></i>
-                    </button>
-                </div>
+            <div class="pt-2">
+                <button onclick="window.location.href='about.html'" class="flex items-center gap-3 text-slate-900 font-bold hover:text-yellow-600 transition group">
+                    Learn more about our mission
+                    <i class="fas fa-arrow-right transition-transform group-hover:translate-x-2"></i>
+                </button>
             </div>
-
-             <!-- Image Content -->
-            <div class="md:w-2/5 h-full min-h-[400px]">
-                <img src="/images/modern-style-cottage-tiny-house-on-green-lawn-3d-render.jpg" alt="images" class="w-80 h-50">
- 
-            </div>
-            
         </div>
-            
-        </main>
+
+        <div class="md:w-2/5 min-h-[250px] md:min-h-full">
+            <img src="/images/modern-style-cottage-tiny-house-on-green-lawn-3d-render.jpg" 
+                 alt="Modern House" 
+                 class="w-full h-full object-cover shadow-inner">
+        </div>
+        
+    </div>
+</main>
         <!---------footer------>
         <footer class="bg-slate-900 text-gray-400 px-4 py-4 text-xs">
         <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
@@ -115,7 +112,8 @@
             <a href="/index.html" class="hover:text-amber-500">Home</a>
             <a href="/about.html" class="hover:text-amber-500">About</a>
             <a href="/contact.html" class="hover:text-amber-500">Contact</a>
-            <a href="#" class="hover:text-amber-500">Landlord</a>
+            <a href="/landlord.html" class="hover:text-amber-500">Landlord</a>
+            <a href="/tenants.html" class="hover:text-amber-500">Tenants</a>
         </nav>
 
         <form class="flex border border-slate-700 rounded-lg overflow-hidden">
