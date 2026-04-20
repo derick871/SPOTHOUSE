@@ -38,6 +38,7 @@ if(overlappingbooking) {
     }
 }
 responsebooking(title, standard, price, location)
+const { kStringMaxLength } = require('buffer');
 const house =require('url');
 const house = new house({
     title: {type: String, required: true},
@@ -142,7 +143,14 @@ async function refreshdashbord (){
 
         const data =await response.json();
     }
-    document.
+    //updates
+     const firstRevenue= document.getElementById(first-revenue).innertext= `Kshs ${data.revenue.toLocaleString()}`;
+     const firstTenant= document.getElementById(first-tenant).innertext= data.activeTenant;
+
+     const tableBody= document.getElementById(tenant-table);
+     tenantBody.innerHTML= data.tenant.map(tenant =>
+        
+     )
 })
 
 
