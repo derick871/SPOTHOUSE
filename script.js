@@ -133,5 +133,16 @@ function handleImagePreview(input) {
         reader.readAsDataURL(file);
     });
 }
+//function fetch and display dashbord data
+document.addEventListener('DOMContentLoaded',() =>
+async function refreshdashbord (){
+    let url= 'https://houselink360.com'
+    try{
+        const response= await fetch(url);
+
+        const data =await response.json();
+    }
+    document.
+})
 
 
