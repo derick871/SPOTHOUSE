@@ -51,22 +51,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 rent: formData.get('current_rent')
             }
         };
-
-        try {
-         const response = await fetch('http://localhost:5503/applications', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
+         
     });
 
-    if (response.ok) {
-        localStorage.removeItem(storageKey); // Clear draft after success
-        alert('Application Saved Successfully!');
-    }
-    } catch (error) {
-       console.error("Data error:", error);
-     }
-    });
+    
 });
 const name = document.getElementById('tenant-contact').value;
 const message = document.getElementById('message-form').value;
@@ -75,9 +63,8 @@ console.log(`sending message from ${name}: ${message}`);
 const feedback = document.getElementById('feedback-message');
 feedback.textContent = 'Message sent successfully!';
 async function booking(title, standard, price, location) {
-    const url = 'http://localhost:5503/bookings'; // Using local JSON server
     
-    const response = await fetch(url, {
+    const response = await fetch(JSON, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
@@ -142,32 +129,43 @@ async function booking(title, standard, price, location) {
 
     // 3. AJAX Payment Submission
     window.makePayment = async function() {
-    // ... (Your loading state logic)
     const paymentData = {
         id: `TXN-${Date.now()}`,
-        amount: 92500,
-        currency: 'Kshs',
+        amount: "",
+        tenantName: "", // Get this from your form
+        property: "",
         method: document.getElementById('phone') ? 'M-Pesa' : 'Card',
-        status: 'success'
+        status: 'success',
+        timestamp: new Date().toISOString()
     };
 
     try {
-        const response = await fetch(`Properties.json`, {
+        // 1. Record the payment in the payments history
+        await fetch('http://localhost:5503/payments', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(paymentData)
         });
 
-        if (response.ok) {
-            window.location.href = 'dashboard.html';
-        }
+        // fetch current dashboard data and add the new amount
+        const dashRes = await fetch('http://localhost:5503/dashboard');
+        const dashData = await dashRes.json();
+        
+        new payment=dashData.revenue += paymentData.amount; 
+        
+        await fetch('http://localhost:5503/dashboard', {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(dashData)
+        });
+
+        alert("Payment Received! Dashboard Updated.");
+        window.location.href = "dashbord.html"; // Redirect to see the result
+
     } catch (error) {
-        alert('Payment failed.');
+        console.error("Payment failed to sync:", error);
     }
 };
-
-    // Link the original HTML button to the function
-    submitBtn.onclick = makePayment;
 });
 
 
@@ -244,7 +242,7 @@ function handleImagePreview(input) {
      async function refreshDashboard() {
     let url = 'http://localhost:5503/dashboard';
     try {
-        const response = await fetch(url);
+        const response = await fetch();
         const data = await response.json();
 
         document.getElementById('first-revenue').innerText = `Kshs ${data.revenue.toLocaleString()}`;
@@ -262,5 +260,19 @@ function handleImagePreview(input) {
         console.error("An error occurred:", error);
     }
 }
+
+const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            // Switch icon between 'bars' and 'times' (X)
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.classList.replace('fa-times', 'fa-bars');
+            } else {
+                menuIcon.classList.replace('fa-bars', 'fa-times');
+            }
+        });
 
 

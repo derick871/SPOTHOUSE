@@ -23,23 +23,33 @@
     <nav id="navbar" class="fixed bg-slate-900/90 left-0 w-full z-50 [100] transition-all duration-300 px-6 py-4 md:px-12 bg-white/10 backdrop-blur-md border-b border-white/20">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <!-- Logo placeholder -->
-            <div class="text-amber-600 font-bold text-xl tracking-wider">SPOTHOUSE</div>
+            <div class="text-white font-bold text-xl tracking-wider">SPOTHOUSE</div>
             
             <!-- Links -->
-            <div class="hidden md:flex items-center gap-8">
+            <div class=" hidden md:flex gap-6 text-[11px] font-bold uppercase tracking-widest text-gray-300 items-center">
                 <a href="index.html" class="text-amber-500 hover:text-white font-medium transition-colors border-b-2 border-transparent hover:border-white py-1">Home</a>
                 <a href="/" class="text-amber-500 hover:text-white font-medium transition-colors border-b-2 border-transparent hover:border-white py-1">About</a>
                 <a href="contact.html" class="text-amber-500 hover:text-white font-medium transition-colors border-b-2 border-transparent hover:border-white py-1">Contact</a>
                 <a href="tenants.html" class="text-amber-500 hover:text-white font-medium transition-colors border-b-2 border-transparent hover:border-white py-1">Tenant</a>
                 <a href="landload.html" class="text-amber-500 hover:text-white font-medium transition-colors border-b-2 border-transparent hover:border-white py-1">Landlord</a>
-                <a href="payment.html" class="bg-amber-600 hover:bg-amber-700 text-white px-5 py-2 rounded-full transition-all font-bold">Payment</a>
-                <a href="/dashbord.html" class="bg-amber-600 hover:bg-amber-700 text-white px-5 py-2 rounded-full transition-all font-bold">Dashbord</a>
+                <a href="payment.html" class="bg-amber-600 hover:bg-amber-700 text-white px-5 py-2 rounded-full transition-all font-bold hidden">Payment</a>
             </div>
+            <button id="menu-toggle" class="md:hidden text-white text-2xl focus:outline-none">
+                <i class="fas fa-bars" id="menu-icon"></i>
+            </button>
+        </div>
+        <div id="mobile-menu" class=" hidden md:hidden bg-slate-900 border-t border-slate-800 flex flex-col p-6 gap-4 text-sm font-bold uppercase tracking-widest text-gray-300">
+            <li><a href="/" class="text-amber-500">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="tenant.html">Tenant</a></li>
+           <li><a href="landload.html">Landlord</a></li> 
+            <li><a href="/dashbord.html">Dashboard</a></li> 
         </div>
     </nav>
 
     <!-- Hero Content -->
-    <div class="relative z-10 flex flex-col justify-center items-center h-full text-center px-4">
+    <div class="relative z-10 flex mt-8 flex-col justify-center items-center h-full text-center px-4">
         <h2 class="text-4xl md:text-6xl lg:text-7xl text-white font-extrabold tracking-tight drop-shadow-lg">
             Spothouse Organisation
         </h2>
@@ -60,8 +70,8 @@
             <div class="flex border border-transpatent bg-slate-300 p-4 rounded-md">
             
               <div>
-                <h1 class="font-bold text-amber-900">Spothouse</h1>
-                <p>It Makes house hunting easy,faster and reliable</p><br>
+                <h1 class="font-bold text-amber-500">Spothouse</h1>
+                <p class="text-gray-600">It Makes house hunting easy,faster and reliable</p><br>
               </div>
               <img src="/images/building 3.jpg" alt="images" class="w-60 h-30">
             </div>
@@ -69,8 +79,8 @@
             <!--------content----->
             <div class="flex border border-transparent p-4 bg-slate-300 rounded-md">
                 <div>
-                   <h3 class="font-bold text-amber-900">What is it</h3>
-                    <p>Spothouse is a modern platform design to enable tenants find <br>
+                   <h3 class="font-bold text-amber-500">What is it</h3>
+                    <p class="text-gray-600">Spothouse is a modern platform design to enable tenants find <br>
                       the perfect home while relocating from one town to another. <br>
                       We connect the tenant and the landlord in a secure way.
                     </p> <br>
@@ -83,16 +93,16 @@
             <!----------mission----->
             <div class="flex gap-2">
             <div class="border border-transparent bg-slate-300 p-4 rounded-md">
-                <h3 class="font-bold text-amber-900 ">Objective</h3>
-                <p>The main aim of the project is to simplify <br> the process of searching house
+                <h3 class="font-bold text-amber-500 ">Objective</h3>
+                <p class="text-gray-600">The main aim of the project is to simplify <br> the process of searching house
                 by providing accurate location, <br>house standard and price all in one place.
             </p><br>
             </div>
             <!---------offers------->
-            <div class="border border-transparent bg-slate-300 p-4 rounded-md">
-                <h3 class="font-bold text-amber-900 ">What we offer</h3>
+            <div class="border text-gray-400 border-transparent bg-slate-300 p-4 rounded-md">
+                <h3 class="font-bold text-amber-500 ">What we offer</h3>
                 <nav>
-                    <ul>
+                    <ul class="text-gray-600">
                        <li>House location with map</li>
                        <li>Standard of the house</li>
                        <li>Direct communication with Landload</li>
@@ -102,7 +112,8 @@
             </div>
         </div>
         <div>
-            <button id="btn" class="p-3  m-4 mb-4 text-white border border-transparent bg-blue-600 rounded-[40%]" onclick="alert('Selecting property!')">
+            <button id="btn"class="bg-blue-700 hover:bg-amber-500 text-white px-8 py-3 rounded-full font-bold transition-transform active:scale-95 shadow-lg"
+                  onclick="alert('Selecting property!')">
                 <a href="contact.html">Select</a>
             </button>
         </div>
