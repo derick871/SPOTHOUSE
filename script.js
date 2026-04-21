@@ -152,7 +152,7 @@ async function booking(title, standard, price, location) {
     };
 
     try {
-        const response = await fetch('http://localhost:5503/payments', {
+        const response = await fetch(`Properties.json`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(paymentData)
