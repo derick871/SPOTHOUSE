@@ -80,10 +80,6 @@ async function booking(title, standard, price, location) {
     return await response.json();
 };
 
-
-
-  
-
  document.addEventListener('DOMContentLoaded', () => {
     const navbar = document.getElementById('navbar');
 
