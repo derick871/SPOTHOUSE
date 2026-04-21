@@ -14,46 +14,42 @@
 </head>
         <header>
             <div class=" mt-0">
-                 <!-- Navigation Container -->
-                <nav class="fixed top-0 w-full z-50 bg-slate-900/90 backdrop-blur-md border-b border-slate-800 justify-evenly" id="navbar">
-                        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-                           <!-- The Glass Card -->
-                            <div class="bg-slate-500 backdrop-blur-xl border border-slate-700/50 rounded-2xl  flex justify-between items-center shadow-2xl shadow-black/20">
+                 <!-- Navigation Bar -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 bg-slate-900/90 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-white tracking-tighter">SPOTHOUSE</div>
             
-                                   <!-- Logo Section -->
-                                <div class="flex items-center gap-2 group cursor-pointer">
-                                    <div class="bg-grey-300 p-2 rounded-lg group-hover:rotate-12 transition-transform">
-                                       <i class="fas fa-house-chimney text-white"></i>
-                                    </div>
-                                    <span class="text-xl font-bold text-white tracking-tighter">SPOTHOUSE</span> <br>
-                                </div>
+            <!-- Desktop Links -->
+            <div class=" hidden md:flex gap-6 text-[11px] font-bold uppercase tracking-widest text-gray-300 items-center">
+                <ul>
+                <a href="/" class="text-white border-b-2 border-amber-500 pb-1">Home</a>
+                <a href="about.html" class="hover:text-amber-500 transition">About</a>
+                <a href="contact.html" class="hover:text-amber-500 transition">Contact</a>
+                <a href="tenant.html" class="hover:text-amber-500 transition">Tenant</a>
+                <a href="landload.html" class="hover:text-amber-500 transition">Landlord</a>
+                <a href="/dashbord.html" class="hover:text-amber-500 transition">Dashboard</a>
+                <a href="payment.html" class="bg-amber-600 px-5 py-2 rounded-full text-slate-900 hover:bg-amber-500 transition ">Payment</a>
+                </ul>
+            </div>
+            
+            <!-- Mobile Menu Toggle -->
+            <button id="menu-toggle" class="md:hidden text-white text-2xl focus:outline-none">
+                <i class="fas fa-bars" id="menu-icon"></i>
+            </button>
+        </div>
 
-                                   <!-- Desktop Links -->
-                                    <div class=" lg:flex items-center gap-2">
-                                        <a href="index.html" class="nav-link font-bold text-white text-sm hover:text-amber-500 transition">Home</a>
-                                        <a href="about.html" class="nav-link font-bold text-white text-sm hover:text-amber-500 transition">About</a>
-                                        <a href="contact.html" class="nav-link font-bold text-white text-sm hover:text-amber-500 transition">Contact</a>
-                                        <a href="tenants.html" class="nav-link font-bold text-white text-sm hover:text-amber-500 transition hidden">Tenant</a>
-                                       <a href="landload.html" class="nav-link font-bold text-white text-sm hover:text-amber-500 transition hidden">Landlord</a>
-                                    </div>
-                                    <!-- Vertical Divider -->
-                                   <div class="h-6 w-[1px] bg-red-300 mx-4">
-
-                                   </div>
-                                   <!-- Payment CTA -->
-                                    <a href="payment.html" class="bg-slate-300 hover:bg-white text-amber-700 px-6 py-2.5 rounded-xl font-bold text-xs uppercase tracking-widest transition-all shadow-lg shadow-amber-500/10">
-                                      Pay Rent
-                                    </a>
-                                </div>
-
-                                <!-- Mobile Toggle -->
-                                <button class="lg:hidden text-white p-2">
-                                   <i class="fas fa-bars-staggered text-xl"></i>
-                                </button>
-                            </div>
-                        </div>
-                </nav>
-
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-800 flex flex-col p-6 gap-4 text-2xsm font-bold uppercase tracking-widest text-gray-300">
+            <ul>
+            <li><a href="/" class="text-amber-500">Home</a></li>
+            <li><a href="about.html" class="text-amber-500">About</a></li>
+            <li><a href="contact.html" class="text-amber-500">Contact</a></li>
+            <li><a href="tenant.html" class="text-amber-500">Tenant</a></li>
+           <li><a href="landload.html" class="text-amber-500">Landlord</a></li> 
+            <li><a href="/dashbord.html" class="text-amber-500">Dashboard</a></li>
+            </ul> 
+        </div>
+    </nav>
             </div>
         </header>
 <body class="bg-[#f8fafc] py-16 px-4">
@@ -61,7 +57,7 @@
     <div class="max-w-3xl mx-auto" id="rent-application-form">
         <!-- Progress Header -->
         <div class="flex justify-between items-center mb-8 px-2">
-            <h1 class="text-2xl font-bold text-slate-900">Rent Application</h1><br>
+            <h1 class="text-2xl font-bold text-amber-500">Rent Application</h1><br>
             <div class="text-xs font-bold text-slate-400 uppercase tracking-widest">Step 1 of 3</div>
         </div>
 
@@ -71,7 +67,7 @@
             <div class="bg-white rounded-3xl p-8 shadow-sm border border-slate-100">
                 <div class="flex items-center gap-4 mb-8">
                     <div class="h-10 w-10 rounded-full bg-slate-900 text-white flex items-center justify-center font-bold text-sm">01</div>
-                    <h2 class="text-lg font-bold text-slate-800">Personal Information</h2>
+                    <h2 class="text-lg font-bold text-amber-500">Personal Information</h2>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-5">
@@ -102,7 +98,7 @@
             <div class="bg-white rounded-3xl p-8 shadow-sm border border-slate-100">
                 <div class="flex items-center gap-4 mb-8">
                     <div class="h-10 w-10 rounded-full bg-slate-900 text-white flex items-center justify-center font-bold text-sm">02</div>
-                    <h2 class="text-lg font-bold text-slate-800">Current Residence</h2>
+                    <h2 class="text-lg font-bold text-amber-500">Current Residence</h2>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-5">
@@ -125,7 +121,7 @@
             <div class="bg-white rounded-3xl p-8 shadow-sm border border-slate-100">
                 <div class="flex items-center gap-4 mb-8">
                     <div class="h-10 w-10 rounded-full bg-slate-900 text-white flex items-center justify-center font-bold text-sm">03</div>
-                    <h2 class="text-lg font-bold text-slate-800">Employment Information</h2>
+                    <h2 class="text-lg font-bold text-amber-500">Employment Information</h2>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-5">
@@ -165,7 +161,7 @@
         <div class="h-10 w-10 rounded-full bg-slate-900 text-white flex items-center justify-center font-bold text-sm">
             <i class="fas fa-check-double"></i>
         </div>
-        <h2 class="text-lg font-bold text-slate-800">Final Verification</h2>
+        <h2 class="text-lg font-bold text-amber-500">Final Verification</h2>
     </div>
 
     <div class="space-y-4">
