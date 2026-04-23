@@ -6,6 +6,7 @@
       "location": "Kisumu",
       "standard": "4 BR + Pool",
       "price": 90000,
+      "status":"",
       "image": "images/modern-custom-suburban-home-exterior.jpg"
     },
     {
@@ -14,6 +15,7 @@
       "location": "Nairobi",
       "standard": "4 BR + Pool",
       "price": 100000,
+      "status":"",
       "image": "images/Oandremoura.jpg"
     },
     {
@@ -22,6 +24,7 @@
       "location": "Nairobi",
       "standard": "3 BR",
       "price": 50000,
+      "status":"",
       "image": "images/building 4.jpeg"
     },
     {
@@ -30,6 +33,62 @@
       "location": "Mombasa",
       "standard": "2 BR",
       "price": 25000,
+      "status":"",
+      "image": "images/pexels-jeffrey-czum-254391-2394446.jpg"
+    },
+    {
+      "id": 4,
+      "title": "White House",
+      "location": "Mombasa",
+      "standard": "2 BR",
+      "price": 25000,
+      "status":"",
+      "image": "images/pexels-jeffrey-czum-254391-2394446.jpg"
+    },
+    {
+      "id": 4,
+      "title": "White House",
+      "location": "Mombasa",
+      "standard": "2 BR",
+      "price": 25000,
+      "status":"",
+      "image": "images/pexels-jeffrey-czum-254391-2394446.jpg"
+    },
+    {
+      "id": 4,
+      "title": "White House",
+      "location": "Mombasa",
+      "standard": "2 BR",
+      "price": 25000,
+      "status":"",
+      "image": "images/pexels-jeffrey-czum-254391-2394446.jpg"
+    },
+    {
+      "id": 4,
+      "title": "White House",
+      "location": "Mombasa",
+      "standard": "2 BR",
+      "price": 25000,
+      "status":"",
+      "image": "images/pexels-jeffrey-czum-254391-2394446.jpg"
+    },
+    {
+      "id": 4,
+      "title": "White House",
+      "location": "Mombasa",
+      "standard": "2 BR",
+      "price": 25000,
+      "status":"",
+      "image": "images/pexels-jeffrey-czum-254391-2394446.jpg"
+    },
+    {
+      "id": 4,
+      "title": "White House",
+      "location": "Mombasa",
+      "standard": "2 BR",
+      "price": 25000,
+      "status":"",
+      "tenant":"",
       "image": "images/pexels-jeffrey-czum-254391-2394446.jpg"
     }
   ]
