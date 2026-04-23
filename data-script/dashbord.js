@@ -56,13 +56,12 @@ function render() {
         const isBooked = house.status === 'booked' || house.booked === true;
 
         // --- SECURITY/PRIVACY FILTER ---
-        // If we are in 'tenant' view AND the house is booked, we 'return' (skip this house).
-        // This effectively hides taken houses from the public view.
-       /// if (currentView === 'tenant' && isBooked) {
-           // return; 
-       // }
+        //  hides taken houses from the public view.
+          if (currentView === 'tenant' && isBooked) {
+            return; 
+        }
 
-        // Create a new container for the house card
+        // Create container for the house card
         const card = document.createElement('div');
         // Apply conditional styling: Booked houses look slightly transparent (opacity-75)
         card.className = `bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden transition-all ${isBooked ? 'opacity-75 border-red-200' : 'hover:shadow-md'}`;
