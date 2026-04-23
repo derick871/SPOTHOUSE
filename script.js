@@ -90,6 +90,111 @@ async function booking(title, standard, price, location) {
         console.error("Booking Error:", error);
     }
 }
+//landlord page start
+class PropertyManager {
+    constructor() {
+        // Elements
+        this.form = document.querySelector('form');
+        this.uploadInput = document.getElementById('gallery-upload');
+        this.previewGrid = document.getElementById('image-preview-grid');
+        this.submitBtn = document.getElementById('btn');
+        this.maxPhotos = 10;
+
+        this.init();
+    }
+
+    init() {
+        // Bind event listeners
+        this.uploadInput.addEventListener('change', (e) => this.handleFileUpload(e));
+        this.form.addEventListener('submit', (e) => this.handleSubmit(e));
+    }
+
+    // --- Gallery Logic ---
+    handleFileUpload(e) {
+        const files = Array.from(e.target.files);
+        
+        files.forEach(file => {
+            if (this.previewGrid.children.length >= this.maxPhotos) {
+                alert(`Limit reached: Maximum ${this.maxPhotos} photos.`);
+                return;
+            }
+            this.renderPreview(file);
+        });
+    }
+
+    renderPreview(file) {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            const card = document.createElement('div');
+            card.className = "relative bg-white p-2 rounded-xl shadow-sm border border-slate-200 group";
+            card.innerHTML = this.getCardTemplate(event.target.result);
+            
+            // Add delete functionality
+            card.querySelector('.remove-btn').onclick = () => card.remove();
+            
+            this.previewGrid.appendChild(card);
+        };
+        reader.readAsDataURL(file);
+    }
+
+    getCardTemplate(imageSrc) {
+        return `
+            <img src="${imageSrc}" class="w-full h-40 object-cover rounded-lg mb-3">
+            <input type="text" placeholder="Label (e.g. Master Bedroom)" 
+                   class="photo-label w-full text-xs border border-slate-100 rounded px-2 py-1 focus:ring-1 focus:ring-yellow-500 outline-none">
+            <button type="button" class="remove-btn absolute -top-2 -right-2 bg-red-500 text-white w-6 h-6 rounded-full text-xs shadow-md opacity-0 group-hover:opacity-100 transition">
+                <i class="fas fa-times"></i>
+            </button>
+        `;
+    }
+
+    // --- Submission Logic ---
+    handleSubmit(e) {
+        e.preventDefault();
+        
+        if (!this.validateForm()) return;
+
+        const formData = this.collectData();
+        console.log("Submitting Property Data:", formData);
+        
+        this.updateUIStatus("Registering...");
+    }
+
+    validateForm() {
+        const checkbox = this.form.querySelector('input[type="checkbox"]');
+        if (!checkbox.checked) {
+            alert("Please certify ownership before proceeding.");
+            return false;
+        }
+        return true;
+    }
+
+    collectData() {
+        // Collect labels from the dynamic inputs
+        const labels = Array.from(this.previewGrid.querySelectorAll('.photo-label'))
+                            .map(input => input.value);
+
+        // Return a structured object
+        return {
+            landlordName: this.form.querySelector('input[placeholder="Derrick Wanyama"]').value,
+            rent: this.form.querySelector('input[type="number"]').value,
+            labels: labels,
+            timestamp: new Date().toISOString()
+        };
+    }
+
+    updateUIStatus(message) {
+        this.submitBtn.innerText = message;
+        this.submitBtn.disabled = true;
+        this.submitBtn.classList.replace('bg-slate-900', 'bg-green-600');
+    }
+}
+
+// Initialize the class
+document.addEventListener('DOMContentLoaded', () => {
+    new PropertyManager();
+});
+
 document.addEventListener('DOMContentLoaded', () => {
     // Select all necessary elements
     const menuToggle = document.getElementById('menu-toggle');
