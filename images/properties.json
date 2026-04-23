@@ -1,44 +1,79 @@
 {
+  "company": {
+    "name": "SPOTHOUSE",
+    "branding": "DEMARCO",
+    "copyright": "© 2026 Spothouse"
+  },
   "properties": [
     {
       "id": 1,
       "title": "Luxury Villa",
       "location": "Kisumu",
-      "standard": "4 BR + Pool",
-      "price": 90000,
-      "currency": "Kshs",
-      "image": "images/modern-custom-suburban-home-exterior.jpg",
-      "category": "Villa"
+      "features": "4 BR + Pool",
+      "price": {
+        "amount": 90000,
+        "currency": "Kshs",
+        "period": "monthly"
+      },
+      "image_url": "images/modern-custom-suburban-home-exterior.jpg",
+      "booking_link": "tenants.html"
     },
     {
       "id": 2,
       "title": "Modern Apartment",
       "location": "Nairobi",
-      "standard": "4 BR + Pool",
-      "price": 100000,
-      "currency": "Kshs",
-      "image": "images/Oandremoura.jpg",
-      "category": "Apartment"
+      "features": "4 BR + Pool",
+      "price": {
+        "amount": 100000,
+        "currency": "Kshs",
+        "period": "monthly"
+      },
+      "image_url": "images/Oandremoura.jpg",
+      "booking_link": "tenants.html"
     },
     {
       "id": 3,
       "title": "Modern Apartment",
       "location": "Nairobi",
-      "standard": "3 BR",
-      "price": 50000,
-      "currency": "Kshs",
-      "image": "images/building 4.jpeg",
-      "category": "Apartment"
+      "features": "3 BR",
+      "price": {
+        "amount": 50000,
+        "currency": "Kshs",
+        "period": "monthly"
+      },
+      "image_url": "images/building 4.jpeg",
+      "booking_link": "tenants.html"
     },
     {
       "id": 4,
       "title": "White House",
       "location": "Mombasa",
-      "standard": "2 BR",
-      "price": 25000,
-      "currency": "Kshs",
-      "image": "images/pexels-jeffrey-czum-254391-2394446.jpg",
-      "category": "House"
+      "features": "2 BR",
+      "price": {
+        "amount": 25000,
+        "currency": "Kshs",
+        "period": "monthly"
+      },
+      "image_url": "images/pexels-jeffrey-czum-254391-2394446.jpg",
+      "booking_link": "tenants.html"
     }
+  ],
+  "contact_info": {
+    "email": "wanyamaderrick4@gmail.com",
+    "phone": "+254745668544",
+    "address": "Nairobi, Kenya",
+    "social_media": {
+      "instagram": "#",
+      "linkedin": "#",
+      "facebook": "#"
+    }
+  },
+  "navigation": [
+    {"label": "Home", "path": "/"},
+    {"label": "About", "path": "about.html"},
+    {"label": "Contact", "path": "contact.html"},
+    {"label": "Tenant", "path": "tenant.html"},
+    {"label": "Landlord", "path": "landload.html"},
+    {"label": "Dashboard", "path": "/dashbord.html"}
   ]
 }

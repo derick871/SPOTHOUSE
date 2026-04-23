@@ -1,11 +1,27 @@
-function filterhouse (){
-    const location =getElementById('location,');
-    const priceRange= getElementById(price);
+function filterhouse() {
+    // 1. Get current values from the dropdowns/inputs
+    const selectedLocation = document.getElementById('location').value;
+    const maxPrice = parseFloat(document.getElementById('price').value) || Infinity;
 
-    document.querySelectorAll('proparty card').forEach(card => {
-        const matchLocation=location=== 'All' ||card.setData.location ===
+    // 2. Loop through every property card
+    document.querySelectorAll('.property-card').forEach(card => {
+        // Access data-location and data-price from the HTML
+        const cardLocation = card.dataset.location;
+        const cardPrice = parseFloat(card.dataset.price);
+
+        // 3. Define the matching logic
+        const matchLocation = selectedLocation === 'All' || cardLocation === selectedLocation;
+        const matchPrice = isNaN(cardPrice) || cardPrice <= maxPrice;
+
+        // 4. Show or hide based on both conditions
+        if (matchLocation && matchPrice) {
+            card.style.display = 'block';
+        } else {
+            card.style.display = 'none';
+        }
     });
 }
+
 //image preview
 const roomLable =[`living room ,kitchen, Bedroom Bathroom`]
 function handleImagePreview(input) {
@@ -21,7 +37,9 @@ function handleImagePreview(input) {
         };
         reader.readAsDataURL(file);
     });
+    console.log(data)
 }
+
 //function fetch and display dashbord data
 
      //updates
@@ -45,4 +63,6 @@ function handleImagePreview(input) {
     } catch (error) {
         console.error("An error occurred:", error);
     }
+    console.log(data)
+
 }

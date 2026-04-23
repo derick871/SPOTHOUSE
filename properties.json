@@ -1,0 +1,36 @@
+
+   [
+    {
+      "id": 1,
+      "title": "Luxury Villa",
+      "location": "Kisumu",
+      "standard": "4 BR + Pool",
+      "price": 90000,
+      "image": "images/modern-custom-suburban-home-exterior.jpg"
+    },
+    {
+      "id": 2,
+      "title": "Modern Apartment",
+      "location": "Nairobi",
+      "standard": "4 BR + Pool",
+      "price": 100000,
+      "image": "images/Oandremoura.jpg"
+    },
+    {
+      "id": 3,
+      "title": "Modern Apartment",
+      "location": "Nairobi",
+      "standard": "3 BR",
+      "price": 50000,
+      "image": "images/building 4.jpeg"
+    },
+    {
+      "id": 4,
+      "title": "White House",
+      "location": "Mombasa",
+      "standard": "2 BR",
+      "price": 25000,
+      "image": "images/pexels-jeffrey-czum-254391-2394446.jpg"
+    }
+  ]
+
