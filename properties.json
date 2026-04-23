@@ -1,95 +1,219 @@
-
-   [
+  [
     {
-      "id": 1,
-      "title": "Luxury Villa",
+      "name": "Luxury Villa",
       "location": "Kisumu",
       "standard": "4 BR + Pool",
-      "price": 90000,
-      "status":"",
-      "image": "images/modern-custom-suburban-home-exterior.jpg"
+      "price_ksh": 90000,
+      "billing_cycle": "monthly",
+      "image_url": "images/modern-custom-suburban-home-exterior.jpg",
+      "booking_url": "tenants.html"
     },
     {
-      "id": 2,
-      "title": "Modern Apartment",
+      "name": "Modern Apartment",
       "location": "Nairobi",
       "standard": "4 BR + Pool",
-      "price": 100000,
-      "status":"",
-      "image": "images/Oandremoura.jpg"
+      "price_ksh": 100000,
+      "billing_cycle": "monthly",
+      "image_url": "images/Oandremoura.jpg",
+      "booking_url": "tenants.html"
     },
     {
-      "id": 3,
-      "title": "Modern Apartment",
+      "name": "Modern Apartment",
       "location": "Nairobi",
       "standard": "3 BR",
-      "price": 50000,
-      "status":"",
-      "image": "images/building 4.jpeg"
+      "price_ksh": 50000,
+      "billing_cycle": "monthly",
+      "image_url": "images/building4.jpeg",
+      "booking_url": "tenants.html"
     },
     {
-      "id": 4,
-      "title": "White House",
-      "location": "Mombasa",
-      "standard": "2 BR",
-      "price": 25000,
-      "status":"",
-      "image": "images/pexels-jeffrey-czum-254391-2394446.jpg"
+      "name": "Modern Apartment",
+      "location": "Nakuru",
+      "standard": "4 BR",
+      "price_ksh": 120000,
+      "billing_cycle": "monthly",
+      "image_url": "/images/assets/pexels-peri-2149976252-37187723.jpg",
+      "booking_url": "tenants.html"
     },
     {
-      "id": 4,
-      "title": "White House",
-      "location": "Mombasa",
-      "standard": "2 BR",
-      "price": 25000,
-      "status":"",
-      "image": "images/pexels-jeffrey-czum-254391-2394446.jpg"
+      "name": "Spring Park",
+      "location": "Nairobi",
+      "standard": "3 BR",
+      "price_ksh": 150000,
+      "billing_cycle": "monthly",
+      "image_url": "/images/assets/pexels-oandremoura-9864028.jpg",
+      "booking_url": "tenants.html"
     },
     {
-      "id": 4,
-      "title": "White House",
-      "location": "Mombasa",
-      "standard": "2 BR",
-      "price": 25000,
-      "status":"",
-      "image": "images/pexels-jeffrey-czum-254391-2394446.jpg"
+      "name": "Kasablanka",
+      "location": "Nairobi",
+      "standard": "4 BR",
+      "price_ksh": 130000,
+      "billing_cycle": "monthly",
+      "image_url": "/images/assets/pexels-najafozturk-31599748.jpg",
+      "booking_url": "tenants.html"
     },
     {
-      "id": 4,
-      "title": "White House",
-      "location": "Mombasa",
-      "standard": "2 BR",
-      "price": 25000,
-      "status":"",
-      "image": "images/pexels-jeffrey-czum-254391-2394446.jpg"
+      "name": "Baraka 040",
+      "location": "Kakamega",
+      "standard": "3 BR",
+      "price_ksh": 90000,
+      "billing_cycle": "monthly",
+      "image_url": "/images/assets/pexels-mibernaa-28957807.jpg",
+      "booking_url": "tenants.html"
     },
     {
-      "id": 4,
-      "title": "White House",
+      "name": "White House",
       "location": "Mombasa",
       "standard": "2 BR",
-      "price": 25000,
-      "status":"",
-      "image": "images/pexels-jeffrey-czum-254391-2394446.jpg"
+      "price_ksh": 25000,
+      "billing_cycle": "monthly",
+      "image_url": "images/pexels-jeffrey-czum-254391-2394446.jpg",
+      "booking_url": "tenants.html"
     },
-    {
-      "id": 4,
-      "title": "White House",
-      "location": "Mombasa",
-      "standard": "2 BR",
-      "price": 25000,
-      "status":"",
-      "image": "images/pexels-jeffrey-czum-254391-2394446.jpg"
-    },
-    {
-      "id": 4,
-      "title": "White House",
-      "location": "Mombasa",
-      "standard": "2 BR",
-      "price": 25000,
-      "status":"",
-      "tenant":"",
-      "image": "images/pexels-jeffrey-czum-254391-2394446.jpg"
-    }
-  ]
+  {
+    "name": "Modern Apartment",
+    "location": "Nairobi",
+    "standard": "3 BR",
+    "price_ksh": 50000,
+    "billing_cycle": "monthly",
+    "image_url": "/images/assets/pexels-seydanur-yildiz-333883408-14855607.jpg",
+    "booking_url": "tenants.html"
+  },
+  {
+    "name": "Elgon Villa",
+    "location": "Nairobi",
+    "standard": "3 BR",
+    "price_ksh": 80000,
+    "billing_cycle": "monthly",
+    "image_url": "/images/assets/pexels-julian-largo-622163228-32163467.jpg",
+    "booking_url": "tenants.html"
+  },
+  {
+    "name": "Modern Apartment",
+    "location": "Webuye",
+    "standard": "3 BR",
+    "price_ksh": 150000,
+    "billing_cycle": "monthly",
+    "image_url": "/images/assets/pexels-joaquin-carfagna-3131171-17626766.jpg",
+    "booking_url": "tenants.html"
+  },
+  {
+    "name": "Tintola",
+    "location": "Eldoret",
+    "standard": "3 BR",
+    "price_ksh": 70000,
+    "billing_cycle": "monthly",
+    "image_url": "/images/assets/pexels-guigolopes-36894519.jpg",
+    "booking_url": "tenants.html"
+  },
+  {
+    "name": "Sweet-Point",
+    "location": "Thika",
+    "standard": "3 BR",
+    "price_ksh": 80000,
+    "billing_cycle": "monthly",
+    "image_url": "/images/assets/pexels-frank-rietsch-135445060-37031068.jpg",
+    "booking_url": "tenants.html"
+  },
+  {
+    "name": "Marcus",
+    "location": "Nairobi",
+    "standard": "3 BR",
+    "price_ksh": 50000,
+    "billing_cycle": "monthly",
+    "image_url": "/images/assets/pexels-elif-525070928-31311632.jpg",
+    "booking_url": "tenants.html"
+  },
+  {
+    "name": "Modern Apartment",
+    "location": "Nairobi",
+    "standard": "3 BR",
+    "price_ksh": 150000,
+    "billing_cycle": "monthly",
+    "image_url": "/images/assets/pexels-dmitry93-12224845.jpg",
+    "booking_url": "tenants.html"
+  },
+  {
+    "name": "Modern Apartment",
+    "location": "Naivasha",
+    "standard": "4 BR",
+    "price_ksh": 250000,
+    "billing_cycle": "monthly",
+    "image_url": "/images/assets/pexels-denys-olieinykov-47479123-7896834.jpg",
+    "booking_url": "tenants.html"
+  },
+  {
+    "name": "Smacker",
+    "location": "Voi",
+    "standard": "3 BR",
+    "price_ksh": 50000,
+    "billing_cycle": "monthly",
+    "image_url": "/images/assets/pexels-colourclouds-36335015.jpg",
+    "booking_url": "tenants.html"
+  },
+  {
+    "name": "Drips",
+    "location": "Kitale",
+    "standard": "3 BR",
+    "price_ksh": 50000,
+    "billing_cycle": "monthly",
+    "image_url": "/images/assets/pexels-chuck-14427071.jpg",
+    "booking_url": "tenants.html"
+  },
+  {
+    "name": "Modern Apartment",
+    "location": "Maadara",
+    "standard": "3 BR",
+    "price_ksh": 130000,
+    "billing_cycle": "monthly",
+    "image_url": "/images/assets/pexels-benprater-36232708.jpg",
+    "booking_url": "tenants.html"
+  },
+  {
+    "name": "Modern Apartment",
+    "location": "Nairobi",
+    "standard": "3 BR",
+    "price_ksh": 150000,
+    "billing_cycle": "monthly",
+    "image_url": "/images/assets/pexels-athena-2962088.jpg",
+    "booking_url": "tenants.html"
+  },
+  {
+    "name": "City-View",
+    "location": "Busia",
+    "standard": "3 BR",
+    "price_ksh": 50000,
+    "billing_cycle": "monthly",
+    "image_url": "/images/assets/pexels-antonio-sokic-1901950-3839430.jpg",
+    "booking_url": "tenants.html"
+  },
+  {
+    "name": "Samurai",
+    "location": "Nairobi",
+    "standard": "3 BR",
+    "price_ksh": 60000,
+    "billing_cycle": "monthly",
+    "image_url": "data-script/assets/pexels-alina-lebedeva-2160623516-37190533.jpg",
+    "booking_url": "tenants.html"
+  },
+  {
+    "name": "Uchumi",
+    "location": "Naivasha",
+    "standard": "3 BR",
+    "price_ksh": 70000,
+    "billing_cycle": "monthly",
+    "image_url": "data-script/assets/pexels-alpography-14022969.jpg",
+    "booking_url": "tenants.html"
+  },
+  {
+    "name": "Mashariki",
+    "location": "Nairobi",
+    "standard": "3 BR",
+    "price_ksh": 20000,
+    "billing_cycle": "monthly",
+    "image_url": "/images/assets/pexels-alpography-14022969.jpg",
+    "booking_url": "tenants.html"
+  }
 
+]
