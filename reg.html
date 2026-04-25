@@ -7,28 +7,31 @@
         <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
 </head>
-<body>
-    <h1>hello</h1>
-    <p>welcome to! <span>SpotHouse</span> </p>
-    <section>
+<body class=" text-white text--center">
+    <div class="bg-slate-300 m-20 rounded">
+    <h1 class="text-center font-bold text-black">hello</h1>
+    <p class="text-center font-bold text-black"> 
+        welcome to! <span>SpotHouse</span>
+    </p>
+     <div class="flex item-center gap-2">
+        <div class="bg-white m-10">
+          <img src="images/building3.jpg" alt="images"class="w-50 h-100 m-10">
+        </div>
+    <section class=" text-black m-10 bg-slate-100 text-center  rounded-md ">
         <h2>sign up</h2>
         <p>create your account for accessibility</p>
-        <div>
+        <div class=" ">
             <input type="text"placeholder="First name"required> <br> <br>
-            <input type="text"placeholder="Last name"required> <br> <br>
-            <input type="text"placeholder="Username"required> <br> <br>
-            <input type="email"placeholder="Email"required> <br> <br>
-            <input type="password" placeholder="Password"required length="8"> <br> <br>
-            <input type="password" placeholder="Confirm Password"required>
+            <input type="text"placeholder="Last name" required> <br> <br>
+            <input type="text"placeholder="Username" required> <br> <br>
+            <input type="email"placeholder="Email" required> <br> <br>
+            <input type="password" placeholder="Password" required length="8"> <br> <br>
+            <input type="password" placeholder="Confirm Password" required>
         </div>
+        <button class="bg-blue-500 rounded p-2"><a href="log.html">Register</a></button>
+        <p>Already have an acount?<a href="log.html"><span class="text-blue-500 font-bold">Login</span></a></p>
     </section>
-    <section>
-        <h2>Sign-In</h2>
-        <p>Enter your details to sign-in your account</p>
-        <div>
-            <input type="text"placeholder="Enter Your username/Email"required> <br> <br>
-            <input type="text"placeholder="enter Your password"required>
-        </div>
-    </section>
+    </div>
+    </div>
 </body>
 </html>

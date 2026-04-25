@@ -1,95 +1,26 @@
-
-   [
-    {
-      "id": 1,
-      "title": "Luxury Villa",
-      "location": "Kisumu",
-      "standard": "4 BR + Pool",
-      "price": 90000,
-      "status":"",
-      "image": "images/modern-custom-suburban-home-exterior.jpg"
-    },
-    {
-      "id": 2,
-      "title": "Modern Apartment",
-      "location": "Nairobi",
-      "standard": "4 BR + Pool",
-      "price": 100000,
-      "status":"",
-      "image": "images/Oandremoura.jpg"
-    },
-    {
-      "id": 3,
-      "title": "Modern Apartment",
-      "location": "Nairobi",
-      "standard": "3 BR",
-      "price": 50000,
-      "status":"",
-      "image": "images/building 4.jpeg"
-    },
-    {
-      "id": 4,
-      "title": "White House",
-      "location": "Mombasa",
-      "standard": "2 BR",
-      "price": 25000,
-      "status":"",
-      "image": "images/pexels-jeffrey-czum-254391-2394446.jpg"
-    },
-    {
-      "id": 4,
-      "title": "White House",
-      "location": "Mombasa",
-      "standard": "2 BR",
-      "price": 25000,
-      "status":"",
-      "image": "images/pexels-jeffrey-czum-254391-2394446.jpg"
-    },
-    {
-      "id": 4,
-      "title": "White House",
-      "location": "Mombasa",
-      "standard": "2 BR",
-      "price": 25000,
-      "status":"",
-      "image": "images/pexels-jeffrey-czum-254391-2394446.jpg"
-    },
-    {
-      "id": 4,
-      "title": "White House",
-      "location": "Mombasa",
-      "standard": "2 BR",
-      "price": 25000,
-      "status":"",
-      "image": "images/pexels-jeffrey-czum-254391-2394446.jpg"
-    },
-    {
-      "id": 4,
-      "title": "White House",
-      "location": "Mombasa",
-      "standard": "2 BR",
-      "price": 25000,
-      "status":"",
-      "image": "images/pexels-jeffrey-czum-254391-2394446.jpg"
-    },
-    {
-      "id": 4,
-      "title": "White House",
-      "location": "Mombasa",
-      "standard": "2 BR",
-      "price": 25000,
-      "status":"",
-      "image": "images/pexels-jeffrey-czum-254391-2394446.jpg"
-    },
-    {
-      "id": 4,
-      "title": "White House",
-      "location": "Mombasa",
-      "standard": "2 BR",
-      "price": 25000,
-      "status":"",
-      "tenant":"",
-      "image": "images/pexels-jeffrey-czum-254391-2394446.jpg"
-    }
-  ]
-
+[
+  { "id": 1, "name": "Luxury Villa", "location": "Kisumu", "standard": "4 BR + Pool", "price": 90000, "image": "images/modern-custom-suburban-home-exterior.jpg" },
+  { "id": 2, "name": "Modern Apartment", "location": "Nairobi", "standard": "4 BR + Pool", "price": 100000, "image": "images/Oandremoura.jpg" },
+  { "id": 3, "name": "Modern Apartment", "location": "Nairobi", "standard": "3 BR", "price": 50000, "image": "images/building4.jpeg" },
+  { "id": 4, "name": "Modern Apartment", "location": "Nairobi", "standard": "3 BR", "price": 50000, "image": "images/pexels-seydanur-yildiz-333883408-14855607.jpg" },
+  { "id": 5, "name": "Modern Apartment", "location": "Nakuru", "standard": "4 BR", "price": 120000, "image": "images/pexels-peri-2149976252-37187723.jpg" },
+  { "id": 6, "name": "Spring Park", "location": "Nairobi", "standard": "3 BR", "price": 150000, "image": "images/pexels-oandremoura-9864028.jpg" },
+  { "id": 7, "name": "Kasablanka", "location": "Nairobi", "standard": "4 BR", "price": 130000, "image": "images/pexels-najafozturk-31599748.jpg" },
+  { "id": 8, "name": "Baraka 040", "location": "Kakamega", "standard": "3 BR", "price": 90000, "image": "images/pexels-mibernaa-28957807.jpg" },
+  { "id": 9, "name": "Elgon Villa", "location": "Nairobi", "standard": "3 BR", "price": 80000, "image": "images/pexels-julian-largo-622163228-32163467.jpg" },
+  { "id": 10, "name": "Modern Apartment", "location": "Webuye", "standard": "3 BR", "price": 150000, "image": "images/pexels-joaquin-carfagna-3131171-17626766.jpg" },
+  { "id": 11, "name": "Tintola", "location": "Eldoret", "standard": "3 BR", "price": 70000, "image": "images/pexels-guigolopes-36894519.jpg" },
+  { "id": 12, "name": "Sweet-Point", "location": "Thika", "standard": "3 BR", "price": 80000, "image": "images/pexels-frank-rietsch-135445060-37031068.jpg" },
+  { "id": 13, "name": "Marcus", "location": "Nairobi", "standard": "3 BR", "price": 50000, "image": "images/pexels-elif-525070928-31311632.jpg" },
+  { "id": 14, "name": "Modern Apartment", "location": "Nairobi", "standard": "3 BR", "price": 150000, "image": "images/pexels-dmitry93-12224845.jpg" },
+  { "id": 15, "name": "Modern Apartment", "location": "Naivasha", "standard": "4 BR", "price": 250000, "image": "images/pexels-denys-olieinykov-47479123-7896834.jpg" },
+  { "id": 16, "name": "Smacker", "location": "Voi", "standard": "3 BR", "price": 50000, "image": "images/pexels-colourclouds-36335015.jpg" },
+  { "id": 17, "name": "Drips", "location": "Kitale", "standard": "3 BR", "price": 50000, "image": "images/pexels-chuck-14427071.jpg" },
+  { "id": 18, "name": "Modern Apartment", "location": "Maadara", "standard": "3 BR", "price": 130000, "image": "images/pexels-benprater-36232708.jpg" },
+  { "id": 19, "name": "Modern Apartment", "location": "Nairobi", "standard": "3 BR", "price": 150000, "image": "images/pexels-athena-2962088.jpg" },
+  { "id": 20, "name": "City-View", "location": "Busia", "standard": "3 BR", "price": 50000, "image": "images/pexels-antonio-sokic-1901950-3839430.jpg" },
+  { "id": 21, "name": "Samurai", "location": "Nairobi", "standard": "3 BR", "price": 60000, "image": "images/pexels-alina-lebedeva-2160623516-37190533.jpg" },
+  { "id": 22, "name": "Uchumi", "location": "Naivasha", "standard": "3 BR", "price": 70000, "image": "images/pexels-alpography-14022969.jpg" },
+  { "id": 23, "name": "Mashariki", "location": "Nairobi", "standard": "3 BR", "price": 20000, "image": "images/pexels-alpography-14022969.jpg" },
+  { "id": 24, "name": "White House", "location": "Mombasa", "standard": "2 BR", "price": 25000, "image": "images/pexels-jeffrey-czum-254391-2394446.jpg" }
+]

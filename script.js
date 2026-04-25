@@ -78,12 +78,12 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // --- 3. BOOKING FUNCTION (Outside DOMContentLoaded so it's globally accessible) ---
-async function booking(title, standard, price, location) {
+async function booking(id, title, standard, price, location,) {
     try {
-        const response = await fetch('http://localhost:5503/bookings', { // Use actual URL string
+        const response = await fetch('poreties.json', { // Use actual URL string
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ title, standard, price, location, timestamp: new Date().toISOString() })
+            body: JSON.stringify({id title, standard, price, location, timestamp: new Date().toISOString() })
         });
         return await response.json();
     } catch (error) {
@@ -223,3 +223,93 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+/**
+ * SPOTHOUSE CORE LOGIC
+ * This script handles the communication between the Tenant and Landlord
+ * using the browser's localStorage as a temporary database.
+ */
+
+// 1. TENANT SIDE: SAVING THE APPLICATION
+// We look for the application form on the Tenant page
+const rentForm = document.getElementById('rent-application-form');
+
+if (rentForm) {
+    rentForm.addEventListener('submit', function(e) {
+        e.preventDefault(); // Prevent the page from refreshing immediately
+
+        // Create an object to hold the tenant's data
+        const applicationData = {
+            id: Date.now(), // Unique ID based on time
+            tenantName: document.querySelector('input[placeholder*="Derick"]').value,
+            tenantEmail: document.querySelector('input[type="email"]').value,
+            property: "Luxury Villa", // This could be dynamic based on the listing clicked
+            status: "Pending",        // Default status is always Pending
+            appliedAt: new Date().toLocaleDateString()
+        };
+
+        // Get existing applications from storage, or start an empty list
+        let allApplications = JSON.parse(localStorage.getItem('spothouse_bookings')) || [];
+        
+        // Add the new application to the list
+        allApplications.push(applicationData);
+
+        // Save the updated list back to the browser storage
+        localStorage.setItem('spothouse_bookings', JSON.stringify(allApplications));
+
+        alert('Success! Your application is now visible to the Landlord.');
+        window.location.href = 'dashbord.html'; // Redirect to see the status
+    });
+}
+
+// 2. LANDLORD SIDE: APPROVING THE BOOKING
+// This function runs on the Dashboard or Landlord page to show the requests
+function renderLandlordDashboard() {
+    const listContainer = document.getElementById('image-preview-grid');
+    if (!listContainer) return;
+
+    const apps = JSON.parse(localStorage.getItem('spothouse_bookings')) || [];
+
+    // Map through applications and create HTML for each
+    listContainer.innerHTML = apps.map((app, index) => `
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+            <div class="flex justify-between items-start">
+                <div>
+                    <h3 class="font-bold text-slate-800">${app.tenantName}</h3>
+                    <p class="text-xs text-slate-500">Applied for: ${app.property}</p>
+                </div>
+                <span class="text-[10px] font-bold px-2 py-1 rounded ${
+                    app.status === 'Approved' ? 'bg-green-100 text-green-700' : 'bg-amber-100 text-amber-600'
+                }">
+                    ${app.status.toUpperCase()}
+                </span>
+            </div>
+
+            ${app.status === 'Pending' ? `
+                <button onclick="changeStatus(${index}, 'Approved')" 
+                        class="mt-4 w-full bg-slate-900 text-white py-2 rounded-xl text-xs font-bold hover:bg-amber-500 transition">
+                    Approve Application
+                </button>
+            ` : `<p class="mt-4 text-[10px] text-green-600 font-bold"><i class="fas fa-check-circle"></i> Tenant Notified</p>`}
+        </div>
+    `).join('');
+}
+
+// This function updates the status and "sends" it back to the tenant's view
+window.changeStatus = function(index, newStatus) {
+    // 1.how get the data from local storage
+    let apps = JSON.parse(localStorage.getItem('spothouse_bookings'));
+    
+    // 2. Change the status of the specific application
+    apps[index].status = newStatus;
+    
+    // 3. Save it back to storage
+    localStorage.setItem('spothouse_bookings', JSON.stringify(apps));
+    
+    // 4. Refresh the UI to show the update
+    renderLandlordDashboard();
+    
+    alert(`Tenant ${apps[index].tenantName} has been approved!`);
+};
+
+// Initialize the dashboard view if the element exists on the current page
+document.addEventListener('DOMContentLoaded', renderLandlordDashboard);
