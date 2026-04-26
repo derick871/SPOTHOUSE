@@ -214,4 +214,83 @@ class DashboardSync {
 
 // Start the admin sync
 new DashboardSync();
+ // Core Logic for Authentication
+        function authenticate(role) {
+            // 1. Hide the login card
+            document.getElementById('authOverlay').classList.add('hidden');
+            
+            // 2. Show the main dashboard
+            document.getElementById('mainContent').classList.remove('hidden');
+            
+            // 3. Update the UI based on role
+            document.getElementById('currentRole').innerText = role.toUpperCase();
+            document.getElementById('viewTitle').innerText = role === 'admin' ? "Admin Dashboard" : "Tenant Listings";
+
+            // 4. Call your existing data loading function from dashbord.js
+            // This assumes toggleView is defined in your dashbord.js
+            if (typeof toggleView === "function") {
+                toggleView(role);
+            }
+        }
+
+        function logout() {
+            // Simple refresh to lock the app again
+            window.location.reload();
+        }
+        function renderHouses(role) {
+    const grid = document.getElementById('houseGrid');
+    grid.innerHTML = ''; // Clear the "Loading" spinner
+
+    // 1. Filter: Tenants only see 'available' houses. Admins see 'all'.
+    const visibleHouses = houses.filter(house => {
+        if (role === 'tenants') {
+            return house.status !== 'booked'; 
+        }
+        return true; 
+    });
+
+    // 2. Loop through and build the UI
+    visibleHouses.forEach(house => {
+        // Condition for the button: only visible for tenants
+        const payButton = role === 'tenants' 
+            ? `<button onclick="processPayment('${house.id}')" class="w-full mt-4 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold py-2 rounded-lg transition-colors">
+                CONFIRM & PAY
+               </button>` 
+            : ''; // Admin gets an empty string (no button)
+
+        // Status Badge Color Logic
+        const badgeColor = house.status === 'booked' ? 'bg-red-500' : 'bg-emerald-500';
+
+        const card = `
+            <div class="bg-white rounded-xl shadow-sm overflow-hidden border border-slate-100 flex flex-col">
+                <div class="relative">
+                    <img src="${house.image}" class="w-full h-40 object-cover" alt="house">
+                    <span class="absolute top-2 right-2 px-2 py-1 rounded text-[10px] font-bold uppercase text-white ${badgeColor}">
+                        ${house.status}
+                    </span>
+                </div>
+                <div class="p-4 flex-grow">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h4 class="font-bold text-slate-800">${house.name}</h4>
+                            <p class="text-slate-500 text-xs"><i class="fa-solid fa-location-dot mr-1"></i>${house.location}</p>
+                        </div>
+                        <p class="text-amber-600 font-bold text-sm">Ksh ${house.price.toLocaleString()}</p>
+                    </div>
+                    
+                    ${payButton} 
+                    
+                    ${role === 'admin' ? `
+                        <div class="mt-4 pt-4 border-t border-slate-50 flex gap-2">
+                            <button class="flex-1 bg-slate-100 text-slate-600 text-[10px] font-bold py-1 rounded hover:bg-slate-200">EDIT</button>
+                            <button class="flex-1 bg-slate-100 text-red-400 text-[10px] font-bold py-1 rounded hover:bg-red-50">REMOVE</button>
+                        </div>
+                    ` : ''}
+                </div>
+            </div>
+        `;
+        grid.insertAdjacentHTML('beforeend', card);
+    });
+}
+        
 
