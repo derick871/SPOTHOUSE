@@ -49,6 +49,7 @@ function render() {
 
     // Dynamic Title: Changes based on which button was clicked
     viewTitle.innerText = currentView === 'admin' ? "Admin: Property Management" : "Available Rentals";
+    viewTitle.innerText = currentView === 'tenants' ? " tenants: check available  houses" : "Available Huoses";
 
     // Loop through every house in our list
     allProperties.forEach(house => {

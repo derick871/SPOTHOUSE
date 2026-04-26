@@ -3,35 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-
+    <title>SpotHouse - Sign Up</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
-<body class=" text-white text--center">
-    <div class="bg-slate-300 m-20 rounded">
-    <h1 class="text-center font-bold text-black">hello</h1>
-    <p class="text-center font-bold text-black"> 
-        welcome to! <span>SpotHouse</span>
-    </p>
-     <div class="flex item-center gap-2">
-        <div class="bg-white m-10">
-          <img src="images/building3.jpg" alt="images"class="w-50 h-100 m-10">
+<body class="bg-slate-200 flex items-center justify-center min-h-screen">
+
+    <div class="bg-slate-300 p-8 rounded-xl shadow-lg max-w-4xl w-full">
+        <h1 class="text-center font-bold text-3xl text-black">Hello</h1>
+        <p class="text-center font-medium text-black mb-6"> 
+            Welcome to! <span class="text-blue-600 font-bold">SpotHouse</span>
+        </p>
+
+        <div class="flex flex-col md:flex-row items-center gap-8">
+            <div class="bg-white p-4 rounded-lg hidden md:block">
+                <img src="images/building3.jpg" alt="Building" class="w-64 h-auto rounded">
+            </div>
+
+            <section class="text-black p-8 bg-slate-100 text-center rounded-md flex-1 w-full">
+                <h2 class="text-2xl font-bold mb-2">Sign Up</h2>
+                <p class="text-sm text-gray-600 mb-6">Create your account for accessibility</p>
+                
+                <form id="registrationForm" class="flex flex-col gap-4">
+                    <input type="text" id="firstName" placeholder="First name" class="p-2 border rounded" required>
+                    <input type="text" id="lastName" placeholder="Last name" class="p-2 border rounded" required>
+                    <input type="text" id="username" placeholder="Username" class="p-2 border rounded" required>
+                    <input type="email" id="email" placeholder="Email" class="p-2 border rounded" required>
+                    <input type="password" id="password" placeholder="Password" class="p-2 border rounded" required minlength="8">
+                    <input type="password" id="confirmPassword" placeholder="Confirm Password" class="p-2 border rounded" required>
+                    
+                    <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 rounded transition">
+                        Register
+                    </button>
+                </form>
+
+                <p class="mt-4 text-sm">
+                    Already have an account? 
+                    <a href="log.html" class="text-blue-500 font-bold hover:underline">Login</a>
+                </p>
+            </section>
         </div>
-    <section class=" text-black m-10 bg-slate-100 text-center  rounded-md ">
-        <h2>sign up</h2>
-        <p>create your account for accessibility</p>
-        <div class=" ">
-            <input type="text"placeholder="First name"required> <br> <br>
-            <input type="text"placeholder="Last name" required> <br> <br>
-            <input type="text"placeholder="Username" required> <br> <br>
-            <input type="email"placeholder="Email" required> <br> <br>
-            <input type="password" placeholder="Password" required length="8"> <br> <br>
-            <input type="password" placeholder="Confirm Password" required>
-        </div>
-        <button class="bg-blue-500 rounded p-2"><a href="log.html">Register</a></button>
-        <p>Already have an acount?<a href="log.html"><span class="text-blue-500 font-bold">Login</span></a></p>
-    </section>
     </div>
-    </div>
+
+    <script>
+        const registrationForm = document.getElementById('registrationForm');
+
+        registrationForm.addEventListener('submit', function(e) {
+            // 1. Prevent the page from refreshing immediately
+            e.preventDefault();
+
+            // 2. Capture the data from the inputs
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            // 3. Simple Logic: Check if passwords match
+            if (password !== confirmPassword) {
+                alert("Passwords do not match!");
+                return;
+            }
+
+            // 4. Create a User Object
+            const userData = {
+                firstName: firstName,
+                lastName: lastName,
+                username: username,
+                email: email,
+                password: password // In a real app, never store plain text passwords!
+            };
+
+            // 5. Save to LocalStorage (Key: 'user')
+            // We use JSON.stringify because localStorage only saves strings
+            localStorage.setItem('user', JSON.stringify(userData));
+
+            alert("Registration successful! Redirecting to login...");
+
+            // 6. Redirect to your login page
+            window.location.href = "log.html";
+        });
+    </script>
 </body>
 </html>

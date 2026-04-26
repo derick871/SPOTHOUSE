@@ -3,27 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>SpotHouse - Login</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-
 </head>
-<body class=" ">
-    <div class="flex bg-slate-300 m-10 item-center rounded">
-        <div class="bg-white rounded m-10">
-        <img src="images/building3.jpg" alt="images"class="w-50 h-100 m-10">
+<body class="bg-slate-200 flex items-center justify-center min-h-screen">
+    <div class="flex bg-slate-300 m-10 items-center rounded-xl shadow-lg max-w-4xl">
+        <div class="bg-white rounded m-10 hidden md:block">
+            <img src="images/building3.jpg" alt="images" class="w-64 h-auto m-10 rounded">
         </div>
-    <section class="bg-white text-black m-10 rounded ">
-        <h2 class="text-center">Sign-In</h2>
-        <p class="text-center">Enter your details to sign-in your account</p>
-        <div class="text-center p-4 rounded-md">
-            <label for="Email"class="m-1">UserName/Email</label><br>
-            <input type="text"placeholder="Enter Your username/Email" required> <br> <br>
-            <label for="password">Password</label><span class="m-15 text-blue-800  font-bold">Forget your password?</span><br>
 
-            <input type="text"placeholder="enter Your password" required>
-        </div>
-        <button class="text-center m-20 p-3 font-bold bg-blue-500 rounded text-white"><a href="contact.html">Login</a></button>
-    </section>
+        <section class="bg-white text-black m-10 p-8 rounded-lg shadow-sm flex-1">
+            <h2 class="text-center text-2xl font-bold">Sign-In</h2>
+            <p class="text-center text-gray-500 mb-6">Enter your details to sign-in to your account</p>
+            
+            <form id="loginForm" class="space-y-4">
+                <div>
+                    <label class="block mb-1 font-medium">Username or Email</label>
+                    <input type="text" id="loginIdentifier" placeholder="Enter Your username/Email" 
+                           class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400" required>
+                </div>
+
+                <div>
+                    <div class="flex justify-between items-center mb-1">
+                        <label class="font-medium">Password</label>
+                        <a href="#" class="text-sm text-blue-800 font-bold hover:underline">Forgot password?</a>
+                    </div>
+                    <input type="password" id="loginPassword" placeholder="Enter Your password" 
+                           class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400" required>
+                </div>
+
+                <button type="submit" class="w-full mt-6 p-3 font-bold bg-blue-500 hover:bg-blue-600 rounded text-white transition">
+                    Login
+                </button>
+            </form>
+            
+            <p class="text-center mt-4 text-sm text-gray-600">
+                Don't have an account? <a href="index.html" class="text-blue-500 font-bold">Register</a>
+            </p>
+        </section>
     </div>
+
+    <script>
+        const loginForm = document.getElementById('loginForm');
+
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // 1. Get the values entered in the login form
+            const enteredId = document.getElementById('loginIdentifier').value;
+            const enteredPass = document.getElementById('loginPassword').value;
+
+            // 2. Fetch the stored user from localStorage
+            const storedUser = localStorage.getItem('user');
+
+            // 3. Check if any user actually exists
+            if (!storedUser) {
+                alert("No account found. Please register first.");
+                return;
+            }
+
+            // 4. Parse the stored string back into a JavaScript Object
+            const user = JSON.parse(storedUser);
+
+            // 5. Comparison Logic
+            // We check if the ID matches either the stored username OR the stored email
+            const isUsernameMatch = (enteredId === user.username || enteredId === user.email);
+            const isPasswordMatch = (enteredPass === user.password);
+
+            if (isUsernameMatch && isPasswordMatch) {
+                alert("Login successful! Welcome, " + user.firstName);
+                window.location.href = "contact.html"; // Redirect to your success page
+            } else {
+                alert("Invalid credentials. Please try again.");
+            }
+        });
+    </script>
 </body>
 </html>
