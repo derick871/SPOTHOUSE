@@ -34,7 +34,7 @@ function render() {
     allProperties.forEach(house => {
         const isBooked = house.status === 'booked' || house.booked === true;
 
-        // Hide booked houses from tenants
+        // NEW: Hide booked houses from tenants (They only see available)
         if (currentRole === 'tenant' && isBooked) return;
 
         const card = document.createElement('div');
@@ -64,20 +64,22 @@ function render() {
                     </div>
                 ` : ''}
 
-                <button 
-                    onclick="processBooking(${house.id})"
-                    ${isBooked ? 'disabled' : ''}
-                    class="w-full py-2 rounded-lg text-xs font-bold uppercase tracking-widest transition-all
-                    ${isBooked 
-                        ? 'bg-slate-100 text-slate-400 cursor-not-allowed border border-slate-200' 
-                        : 'bg-slate-900 text-white hover:bg-amber-600'}">
-                    ${isBooked ? 'House Taken' : 'Book & Pay Now'}
-                </button>
+                ${currentRole === 'tenant' ? `
+                    <button 
+                        onclick="processBooking(${house.id})"
+                        ${isBooked ? 'disabled' : ''}
+                        class="w-full py-2 rounded-lg text-xs font-bold uppercase tracking-widest transition-all
+                        ${isBooked 
+                            ? 'bg-slate-100 text-slate-400 cursor-not-allowed border border-slate-200' 
+                            : 'bg-slate-900 text-white hover:bg-amber-600'}">
+                        ${isBooked ? 'House Taken' : 'Book & Pay Now'}
+                    </button>
+                ` : ''}
 
                 ${currentRole === 'admin' ? `
                     <div class="mt-3 pt-3 border-t border-slate-100 flex gap-2">
-                        <button class="flex-1 text-[10px] font-bold py-1 bg-slate-50 rounded">EDIT</button>
-                        <button class="flex-1 text-[10px] font-bold py-1 bg-red-50 text-red-500 rounded">REMOVE</button>
+                        <button onclick="editProperty(${house.id})" class="flex-1 text-[10px] font-bold py-1 bg-slate-50 rounded hover:bg-slate-200 transition-colors">EDIT</button>
+                        <button onclick="removeProperty(${house.id})" class="flex-1 text-[10px] font-bold py-1 bg-red-50 text-red-500 rounded hover:bg-red-100 transition-colors">REMOVE</button>
                     </div>
                 ` : ''}
             </div>
@@ -89,6 +91,28 @@ function render() {
 }
 
 // ================= BUSINESS LOGIC =================
+
+// NEW: Edit Logic
+function editProperty(id) {
+    const house = allProperties.find(h => h.id === id);
+    const newName = prompt("Edit Property Name:", house.name || house.title);
+    const newPrice = prompt("Edit Price (Ksh):", house.price);
+
+    if (newName && newPrice) {
+        house.name = newName;
+        house.title = newName;
+        house.price = parseInt(newPrice);
+        render();
+    }
+}
+
+// NEW: Remove Logic
+function removeProperty(id) {
+    if (confirm("Are you sure you want to remove this property?")) {
+        allProperties = allProperties.filter(h => h.id !== id);
+        render();
+    }
+}
 
 function updateStats() {
     const bookedUnits = allProperties.filter(h => h.status === 'booked');
@@ -119,11 +143,9 @@ function processBooking(id) {
     const tenantName = prompt(`Enter Tenant Name for ${house.name || house.title}:`);
     
     if (tenantName) {
-        // Update Local State
         house.status = 'booked';
         house.tenant = tenantName;
 
-        // Sync with LocalStorage for the Admin Table
         const paymentData = {
             property: house.name || house.title,
             name: tenantName,
@@ -141,7 +163,7 @@ function processBooking(id) {
 
 class DashboardSync {
     constructor() {
-        this.tableBody = document.querySelector('#adminTableBody'); // Ensure this ID exists in HTML
+        this.tableBody = document.querySelector('#adminTableBody');
         if (!this.tableBody) return;
         this.init();
     }
