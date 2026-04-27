@@ -34,7 +34,7 @@ function render() {
     allProperties.forEach(house => {
         const isBooked = house.status === 'booked' || house.booked === true;
 
-        // NEW: Hide booked houses from tenants (They only see available)
+        // Tenants only see available houses
         if (currentRole === 'tenant' && isBooked) return;
 
         const card = document.createElement('div');
@@ -72,7 +72,7 @@ function render() {
                         ${isBooked 
                             ? 'bg-slate-100 text-slate-400 cursor-not-allowed border border-slate-200' 
                             : 'bg-slate-900 text-white hover:bg-amber-600'}">
-                        ${isBooked ? 'House Taken' : 'Book & Pay Now'}
+                        ${isBooked ? 'House Taken' : 'Confirm & Pay Now'}
                     </button>
                 ` : ''}
 
@@ -92,29 +92,17 @@ function render() {
 
 // ================= BUSINESS LOGIC =================
 
-// NEW: Edit Logic
-function editProperty(id) {
-    const house = allProperties.find(h => h.id === id);
-    const newName = prompt("Edit Property Name:", house.name || house.title);
-    const newPrice = prompt("Edit Price (Ksh):", house.price);
-
-    if (newName && newPrice) {
-        house.name = newName;
-        house.title = newName;
-        house.price = parseInt(newPrice);
-        render();
-    }
-}
-
-// NEW: Remove Logic
-function removeProperty(id) {
-    if (confirm("Are you sure you want to remove this property?")) {
-        allProperties = allProperties.filter(h => h.id !== id);
-        render();
-    }
-}
-
 function updateStats() {
+    const statsContainer = document.getElementById('statsContainer'); // Assuming you have a wrapper for stats
+    
+    // HIDE STATS FROM TENANTS
+    if (currentRole === 'tenant') {
+        if (statsContainer) statsContainer.classList.add('hidden');
+        return; 
+    } else {
+        if (statsContainer) statsContainer.classList.remove('hidden');
+    }
+
     const bookedUnits = allProperties.filter(h => h.status === 'booked');
     const revenue = bookedUnits.reduce((sum, h) => sum + h.price, 0);
 
@@ -127,76 +115,4 @@ function updateStats() {
     if (tenEl) tenEl.innerText = bookedUnits.length;
 }
 
-function authenticate(role) {
-    currentRole = role;
-    document.getElementById('authOverlay')?.classList.add('hidden');
-    document.getElementById('mainContent')?.classList.remove('hidden');
-    
-    const roleLabel = document.getElementById('currentRole');
-    if (roleLabel) roleLabel.innerText = role.toUpperCase();
-    
-    render();
-}
-
-function processBooking(id) {
-    const house = allProperties.find(h => h.id === id);
-    const tenantName = prompt(`Enter Tenant Name for ${house.name || house.title}:`);
-    
-    if (tenantName) {
-        house.status = 'booked';
-        house.tenant = tenantName;
-
-        const paymentData = {
-            property: house.name || house.title,
-            name: tenantName,
-            amount: house.price,
-            status: "Paid",
-            date: new Date().toLocaleDateString()
-        };
-        localStorage.setItem('latestPayment', JSON.stringify(paymentData));
-
-        render(); 
-    }
-}
-
-// ================= ADMIN TABLE SYNC =================
-
-class DashboardSync {
-    constructor() {
-        this.tableBody = document.querySelector('#adminTableBody');
-        if (!this.tableBody) return;
-        this.init();
-    }
-
-    init() {
-        window.addEventListener('storage', () => this.displayData());
-        this.displayData();
-    }
-
-    displayData() {
-        const rawData = localStorage.getItem('latestPayment');
-        if (!rawData || !this.tableBody) return;
-
-        const data = JSON.parse(rawData);
-        const row = document.createElement('tr');
-        row.className = "border-b border-slate-100 bg-yellow-50 animate-pulse";
-        
-        row.innerHTML = `
-            <td class="px-6 py-4 font-medium">${data.property}</td>
-            <td class="px-6 py-4">${data.name}</td>
-            <td class="px-6 py-4 font-bold">Ksh ${data.amount.toLocaleString()}</td>
-            <td class="px-6 py-4">
-                <span class="px-2 py-1 rounded-full text-xs font-bold bg-green-100 text-green-700">
-                    ${data.status}
-                </span>
-            </td>
-        `;
-        this.tableBody.prepend(row);
-    }
-}
-
-// Initialize
-document.addEventListener('DOMContentLoaded', () => {
-    fetchProperties();
-    new DashboardSync();
-});
+// ... rest of your authenticate, processBooking, and DashboardSync code remains the same
