@@ -115,13 +115,11 @@
     <script>
     // Function to handle Login
     function authenticate(role) {
-        // 1. Hide the login overlay
         document.getElementById('authOverlay').classList.add('hidden');
         
         // 2. Show the dashboard content
         document.getElementById('mainContent').classList.remove('hidden');
         
-        // 3. Update the UI to show who is logged in
         document.getElementById('currentRole').textContent = role.toUpperCase();
         
         // Optional: Log it to ensure it's working
@@ -130,10 +128,8 @@
 
     // Function to handle Logout
     function logout() {
-        // 1. Hide the dashboard content
         document.getElementById('mainContent').classList.add('hidden');
         
-        // 2. Show the login overlay again
         document.getElementById('authOverlay').classList.remove('hidden');
         
         // 3. Reset the role text
