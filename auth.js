@@ -28,7 +28,7 @@ const registrationForm = document.getElementById('registrationForm');
             };
 
             // 5. Save to LocalStorage (Key: 'user')
-            // We use JSON.stringify because localStorage only saves strings
+            // I use JSON.stringify because localStorage only saves strings
             localStorage.setItem('user', JSON.stringify(userData));
 
             alert("Registration successful! Redirecting to login...");
@@ -57,8 +57,7 @@ const registrationForm = document.getElementById('registrationForm');
             // 4. Parse the stored string back into a JavaScript Object
             const user = JSON.parse(storedUser);
 
-            // 5. Comparison Logic
-            // We check if the ID matches either the stored username OR the stored email
+            // To check if the ID matches either the stored username OR the stored email
             const isUsernameMatch = (enteredId === user.username || enteredId === user.email);
             const isPasswordMatch = (enteredPass === user.password);
 

@@ -3,145 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Rental Dashboard</title>
+    <title>Admin Property Manager</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <style>
-        .blur-bg { backdrop-filter: blur(8px); }
-    </style>
 </head>
-<body class="bg-slate-50 min-h-screen pb-12">
+<body class="bg-slate-50 p-6">
 
-    <div id="authOverlay" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/80 blur-bg">
-        <div class="bg-white p-8 rounded-2xl shadow-2xl max-w-sm w-full mx-4 border-t-4 border-amber-500 text-center">
-            <div class="mb-6">
-                <i class="fa-solid fa-house-chimney-window text-5xl text-amber-500 mb-4"></i>
-                <h2 class="text-2xl font-bold text-slate-800">Welcome Back</h2>
-                <p class="text-slate-500 text-sm">Please select your portal to continue</p>
-            </div>
-            
-            <div class="space-y-4">
-                <div>
-                    <label for="name">Name :</label>
-                    <input type="text" placeholder="Full Name" required> <br><br>
-                    <label for="password">Password :</label>
-                    <input type="password" placeholder="password" required>
-                <button onclick="authenticate('admin')" class="w-full bg-slate-900 hover:bg-blue-800 text-white font-bold py-3 rounded-xl transition duration-200 flex items-center justify-center gap-3">
-                    <i class="fa-solid fa-user-shield"></i> Login as Admin
-                </button>
-                </div>
-                <div>
-                    <label for="name">Name :</label>
-                    <input type="text" placeholder="Full Name"Required> <br><br>
-                    <label for="password">Password :</label>
-                    <input type="password" placeholder="password"Required>
-                <button onclick="authenticate('tenants')" class="w-full bg-slate-900 hover:bg-blue-600 text-white font-bold py-3 rounded-xl transition duration-200 flex items-center justify-center gap-3">
-                    <i class="fa-solid fa-user-house"></i> Login as Tenant
-                </button>
-                </div>
-            </div>
-            <p class="mt-6 text-xs text-amber-500 uppercase tracking-widest font-semibold">Spothouse Manager</p>
+    <div id="statsContainer" class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+            <p class="text-slate-500 text-sm font-medium">Total Revenue</p>
+            <h2 id="totalRevenue" class="text-2xl font-bold text-emerald-600">Ksh 0</h2>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+            <p class="text-slate-500 text-sm font-medium">Available Units</p>
+            <h2 id="unitsAvailable" class="text-2xl font-bold text-slate-800">0</h2>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+            <p class="text-slate-500 text-sm font-medium">Active Tenants</p>
+            <h2 id="activeTenants" class="text-2xl font-bold text-blue-600">0</h2>
         </div>
     </div>
 
-    <div id="mainContent" class="hidden">
-        <nav class="bg-slate-900 text-white p-4 shadow-lg mb-8">
-            <div class="max-w-7xl mx-auto flex justify-between items-center">
-                <h1 class="text-xl font-bold tracking-tight">
-                    <i class="fa-solid fa-house-chimney-window text-amber-500 mr-2"></i> 
-                    SPOTHOUSE <span class="font-light text-slate-400">MANAGER</span>
-                </h1>
-                <div class="flex gap-4">
-                    <button id="logoutBtn" onclick="logout()" class="bg-red-900 hover:bg-red-500 text-white hover:text-white px-4 py-1 rounded-full text-xs font-bold border border-red-500 transition-all">
-                        LOGOUT
-                    </button>
-                    <button class="bg-slate-700 hover:bg-amber-500 text-white hover:text-white px-4 py-1 rounded-full text-xs font-bold border  transition-all">
-                        PAYMENT
-                    </button>
-                </div>
-            </div>
-        </nav>
-
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                <div class="bg-white p-6 rounded-xl shadow-sm border-b-4 border-emerald-500">
-                    <div class="flex items-center justify-between">
-                        <div>
-                            <p class="text-slate-500 text-xs font-bold uppercase tracking-wider">Total Revenue</p>
-                            <h2 class="text-3xl font-bold text-slate-800" id="totalRevenue">Ksh 0</h2>
-                        </div>
-                        <i class="fa-solid fa-money-bill-trend-up text-3xl text-emerald-100"></i>
-                    </div>
-                </div>
-                
-                <div class="bg-white p-6 rounded-xl shadow-sm border-b-4 border-blue-500">
-                    <div class="flex items-center justify-between">
-                        <div>
-                            <p class="text-slate-500 text-xs font-bold uppercase tracking-wider">Units Listed</p>
-                            <h2 class="text-3xl font-bold text-slate-800" id="occupiedCount">0</h2>
-                        </div>
-                        <i class="fa-solid fa-building text-3xl text-blue-100"></i>
-                    </div>
-                </div>
-
-                <div class="bg-white p-6 rounded-xl shadow-sm border-b-4 border-orange-500">
-                    <div class="flex items-center justify-between">
-                        <div>
-                            <p class="text-slate-500 text-xs font-bold uppercase tracking-wider">Active Tenants</p>
-                            <h2 class="text-3xl font-bold text-slate-800" id="tenantCount">0</h2>
-                        </div>
-                        <i class="fa-solid fa-users text-3xl text-orange-100"></i>
-                    </div>
-                </div>
-            </div>
-
-            <div class="flex justify-between items-center mb-6">
-                <h3 class="text-xl font-bold text-slate-800" id="viewTitle">Property Management</h3>
-                <div class="flex items-center gap-2">
-                    <span class="relative flex h-3 w-3">
-                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                        <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
-                    </span>
-                    <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Live Sync: <span id="currentRole" class="text-amber-600">None</span></span>
-                </div>
-            </div>
-
-            <div id="houseGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                <div class="col-span-full text-center py-20">
-                    <i class="fas fa-spinner fa-spin text-3xl text-slate-300"></i>
-                    <p class="text-slate-400 mt-4">Loading Spothouse units...</p>
-                </div>
-            </div>
-        </div>
+    <div class="flex justify-between items-center mb-6">
+        <h1 class="text-2xl font-bold text-slate-800">Property Management</h1>
+        <button onclick="addNewProperty()" class="bg-slate-900 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-slate-700">
+            + ADD PROPERTY
+        </button>
     </div>
 
-    <script>
-    // Function to handle Login
-    function authenticate(role) {
-        document.getElementById('authOverlay').classList.add('hidden');
-        
-        // 2. Show the dashboard content
-        document.getElementById('mainContent').classList.remove('hidden');
-        
-        document.getElementById('currentRole').textContent = role.toUpperCase();
-        
-        // Optional: Log it to ensure it's working
-        console.log("Logged in as: " + role);
-    }
+    <div id="adminGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        </div>
 
-    // Function to handle Logout
-    function logout() {
-        document.getElementById('mainContent').classList.add('hidden');
-        
-        document.getElementById('authOverlay').classList.remove('hidden');
-        
-        // 3. Reset the role text
-        document.getElementById('currentRole').textContent = "None";
-        
-        // Optional: Clear any session data if you add it later
-        console.log("User logged out");
-    }
-</script>
-    <script src="/data-script/dashbord.js"></script>
+    <script src="data-script/dashbord.js"></script>
 </body>
 </html>

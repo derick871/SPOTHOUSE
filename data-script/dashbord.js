@@ -1,118 +1,107 @@
-// ================= GLOBAL STATE =================
 let allProperties = [];
-let currentRole = 'admin'; // 'admin' or 'tenant'
 
-// ================= DATA INITIALIZATION =================
-
-async function fetchProperties() {
+async function fetchAdminData() {
     try {
         const response = await fetch('properties.json');
-        allProperties = await response.json();
-        render();
+        const data = await response.json();
+        
+        // Ensure every property has a status if missing in JSON
+        allProperties = data.map(p => ({
+            ...p,
+            status: p.status || 'vacant', // Default to vacant if not specified
+            tenant: p.tenant || 'None'
+        }));
+        
+        renderAdminDashboard();
+        updateAdminStats();
     } catch (error) {
-        console.error('Error loading properties:', error);
-        const grid = document.getElementById('houseGrid');
-        if (grid) grid.innerHTML = `<p class="col-span-full text-center text-red-500">Failed to load property data.</p>`;
+        console.error("Error fetching data for Admin:", error);
     }
 }
 
-// ================= UI RENDERING LOGIC =================
+function updateAdminStats() {
+    // 1. Total Revenue (Sum of booked properties)
+    const revenue = allProperties
+        .filter(h => h.status === 'booked')
+        .reduce((sum, h) => sum + h.price, 0);
 
-function render() {
-    const grid = document.getElementById('houseGrid');
-    const viewTitle = document.getElementById('viewTitle');
+    // 2. Units Available - Showing TOTAL number of houses in JSON
+    const totalUnits = allProperties.length;
+
+    // 3. Active Tenants (Count of booked properties)
+    const active = allProperties.filter(h => h.status === 'booked').length;
+
+    document.getElementById('totalRevenue').innerText = `Ksh ${revenue.toLocaleString()}`;
+    document.getElementById('unitsAvailable').innerText = totalUnits; // Shows total count
+    document.getElementById('activeTenants').innerText = active;
+}
+
+function renderAdminDashboard() {
+    const grid = document.getElementById('adminGrid');
     if (!grid) return;
-
     grid.innerHTML = '';
 
-    // Set Header Title
-    if (viewTitle) {
-        viewTitle.innerText = currentRole === 'admin' ? "Admin: Property Management" : "Available Rentals";
-    }
-
-    // Filter and Display
     allProperties.forEach(house => {
-        const isBooked = house.status === 'booked' || house.booked === true;
-
-        // Tenants only see available houses
-        if (currentRole === 'tenant' && isBooked) return;
-
+        const isBooked = house.status === 'booked';
         const card = document.createElement('div');
-        card.className = `bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden transition-all ${isBooked ? 'opacity-75 border-red-200' : 'hover:shadow-md'}`;
+        card.className = `p-4 border rounded-xl bg-white transition-all ${isBooked ? 'border-red-200 shadow-inner' : 'border-slate-200 shadow-sm'}`;
 
         card.innerHTML = `
-            <div class="relative h-44 overflow-hidden">
-                <img src="${house.image}" alt="${house.name}" 
-                     onerror="this.src='https://via.placeholder.com/400x300?text=No+Image'"
-                     class="w-full h-full object-cover">
-                <div class="absolute top-2 right-2">
-                    <span class="${isBooked ? 'bg-red-500' : 'bg-emerald-500'} text-white text-[10px] px-2 py-1 rounded-full font-bold uppercase">
-                        ${isBooked ? 'Booked' : 'Available'}
-                    </span>
-                </div>
+            <img src="${house.image}" class="w-full h-32 object-cover rounded-lg mb-3" onerror="this.src='https://via.placeholder.com/400x300?text=No+Image'">
+            <h3 class="font-bold text-slate-800">${house.name}</h3>
+            <p class="text-xs text-slate-500">${house.location} | ${house.standard}</p>
+            <p class="text-sm font-bold text-emerald-600 mt-1">Ksh ${house.price.toLocaleString()}</p>
+            
+            <div class="mt-2 py-1 px-2 inline-block rounded text-[10px] font-bold uppercase ${isBooked ? 'bg-red-100 text-red-600' : 'bg-green-100 text-green-600'}">
+                ${house.status}
             </div>
-            <div class="p-5">
-                <div class="flex justify-between items-start mb-2">
-                    <h4 class="font-bold text-slate-800 text-lg truncate">${house.name || house.title}</h4>
-                    <span class="text-emerald-600 font-bold">Ksh ${house.price.toLocaleString()}</span>
-                </div>
-                
-                ${isBooked && currentRole === 'admin' ? `
-                    <div class="bg-red-50 p-2 rounded mb-4">
-                        <p class="text-[10px] text-red-400 font-bold uppercase">Current Tenant</p>
-                        <p class="text-sm text-slate-700 font-semibold">${house.tenant || 'Occupied'}</p>
-                    </div>
-                ` : ''}
-
-                ${currentRole === 'tenant' ? `
-                    <button 
-                        onclick="processBooking(${house.id})"
-                        ${isBooked ? 'disabled' : ''}
-                        class="w-full py-2 rounded-lg text-xs font-bold uppercase tracking-widest transition-all
-                        ${isBooked 
-                            ? 'bg-slate-100 text-slate-400 cursor-not-allowed border border-slate-200' 
-                            : 'bg-slate-900 text-white hover:bg-amber-600'}">
-                        ${isBooked ? 'House Taken' : 'Confirm & Pay Now'}
-                    </button>
-                ` : ''}
-
-                ${currentRole === 'admin' ? `
-                    <div class="mt-3 pt-3 border-t border-slate-100 flex gap-2">
-                        <button onclick="editProperty(${house.id})" class="flex-1 text-[10px] font-bold py-1 bg-slate-50 rounded hover:bg-slate-200 transition-colors">EDIT</button>
-                        <button onclick="removeProperty(${house.id})" class="flex-1 text-[10px] font-bold py-1 bg-red-50 text-red-500 rounded hover:bg-red-100 transition-colors">REMOVE</button>
-                    </div>
-                ` : ''}
+            
+            ${isBooked ? `<p class="text-[11px] mt-2 text-slate-600 italic">Tenant: ${house.tenant}</p>` : ''}
+            
+            <div class="flex gap-2 mt-4">
+                <button onclick="editProperty(${house.id})" class="flex-1 text-xs py-1 bg-slate-800 text-white rounded hover:bg-slate-700">Edit</button>
+                <button onclick="deleteProperty(${house.id})" class="flex-1 text-xs py-1 bg-red-50 text-red-500 rounded border border-red-100 hover:bg-red-100">Delete</button>
             </div>
         `;
         grid.appendChild(card);
     });
-
-    updateStats();
 }
 
-// ================= BUSINESS LOGIC =================
+// ================= FUNCTIONAL BUTTONS =================
 
-function updateStats() {
-    const statsContainer = document.getElementById('statsContainer'); // Assuming you have a wrapper for stats
-    
-    // HIDE STATS FROM TENANTS
-    if (currentRole === 'tenant') {
-        if (statsContainer) statsContainer.classList.add('hidden');
-        return; 
-    } else {
-        if (statsContainer) statsContainer.classList.remove('hidden');
+// 1. DELETE FUNCTION
+function deleteProperty(id) {
+    if (confirm("Are you sure you want to delete this property?")) {
+        // Filter out the property with the matching ID
+        allProperties = allProperties.filter(house => house.id !== id);
+        
+        // Refresh UI and Stats
+        renderAdminDashboard();
+        updateAdminStats();
     }
-
-    const bookedUnits = allProperties.filter(h => h.status === 'booked');
-    const revenue = bookedUnits.reduce((sum, h) => sum + h.price, 0);
-
-    const revEl = document.getElementById('totalRevenue');
-    const occEl = document.getElementById('occupiedCount');
-    const tenEl = document.getElementById('tenantCount');
-
-    if (revEl) revEl.innerText = `Ksh ${revenue.toLocaleString()}`;
-    if (occEl) occEl.innerText = allProperties.length;
-    if (tenEl) tenEl.innerText = bookedUnits.length;
 }
 
-// ... rest of your authenticate, processBooking, and DashboardSync code remains the same
+// 2. EDIT FUNCTION
+function editProperty(id) {
+    // Find the property in the array
+    const houseIndex = allProperties.findIndex(h => h.id === id);
+    const house = allProperties[houseIndex];
+
+    // Simple prompt-based editing
+    const newName = prompt("Edit Property Name:", house.name);
+    const newPrice = prompt("Edit Price (Numbers only):", house.price);
+    const newStatus = prompt("Edit Status (vacant/booked):", house.status);
+
+    if (newName && newPrice) {
+        // Update the object in the array
+        allProperties[houseIndex].name = newName;
+        allProperties[houseIndex].price = parseInt(newPrice);
+        allProperties[houseIndex].status = newStatus.toLowerCase();
+
+        // Refresh UI and Stats
+        renderAdminDashboard();
+        updateAdminStats();
+    }
+}
+
+document.addEventListener('DOMContentLoaded', fetchAdminData);
