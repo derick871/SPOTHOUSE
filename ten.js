@@ -68,7 +68,7 @@ function render() {
                     class="w-full py-3 rounded-lg font-bold text-xs uppercase tracking-widest transition-colors
                     ${isBooked 
                         ? 'bg-slate-300 text-slate-500 cursor-not-allowed' 
-                        : 'bg-slate-900 text-white hover:bg-emerald-600'}">
+                        : 'bg-slate-700 text-white hover:bg-amber-500'}">
                     ${isBooked ? 'House Unavailable' : 'Pay & Book Now'}
                 </button>
             </div>
