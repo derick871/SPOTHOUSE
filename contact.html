@@ -3,43 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <div class="contact-container">
-        <h2>Send us a Message</h2>
-        <form action="#">
-            <div class="form-group">
-                <label for="name">Full Name</label>
-                <input type="text" id="name" name="name" placeholder="Enter your name" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" placeholder="email@example.com" required>
-            </div>
-            <div class="form-group">
-                <label for="message">Your Message</label>
-                <textarea id="message" name="message" rows="4" placeholder="How can we help you?" required></textarea>
-            </div>
-            <button type="submit">Submit Request</button>
-        </form>
-        <div class="mt-12 p-8 bg-slate-600 text-white rounded-xl text-center md:text-left flex flex-col md:flex-row justify-between items-center gap-6">
+<body class="bg-slate-100 flex items-center justify-center min-h-screen p-6">
+
+    <div class="max-w-4xl w-full bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col md:flex-row">
+        
+        <div class="bg-slate-800 p-10 text-white md:w-2/5 flex flex-col justify-between">
             <div>
-                <h2 class="text-2xl font-bold text-amber-500 mb-2">Get in touch</h2>
-                <p class="text-slate-400 mb-4">Have questions or want to list your properties? Reach out to us.</p>
-                <div class="space-y-1">
-                    <p><i class="fas fa-envelope mr-2 text-amber-500"></i> <a href="mailto:wanyamaderrick4@gmail.com" class="hover:underline">wanyamaderrick4@gmail.com</a></p>
-                    <p><i class="fas fa-phone mr-2 text-amber-500"></i> <a href="tel:+254745668544">0745668544</a></p>
-                    <p><i class="fas fa-map-marker-alt mr-2 text-amber-500"></i> Nairobi, Kenya</p>
+                <h2 class="text-3xl font-bold text-amber-500 mb-4">Get in touch</h2>
+                <p class="text-slate-300 mb-8">Have questions or want to list your properties? Reach out to us and we'll get back to you shortly.</p>
+                
+                <div class="space-y-6">
+                    <div class="flex items-center gap-4">
+                        <div class="bg-slate-700 p-3 rounded-full">
+                            <i class="fas fa-envelope text-amber-500"></i>
+                        </div>
+                        <a href="mailto:wanyamaderrick4@gmail.com" class="hover:text-amber-400 transition-colors">wanyamaderrick4@gmail.com</a>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="bg-slate-700 p-3 rounded-full">
+                            <i class="fas fa-phone text-amber-500"></i>
+                        </div>
+                        <a href="tel:+254745668544" class="hover:text-amber-400 transition-colors">0745668544</a>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="bg-slate-700 p-3 rounded-full">
+                            <i class="fas fa-map-marker-alt text-amber-500"></i>
+                        </div>
+                        <span>Nairobi, Kenya</span>
+                    </div>
                 </div>
             </div>
-            <button class="bg-slate-700 hover:bg-amber-500 text-white px-8 py-3 rounded-md font-bold transition-transform active:scale-95 shadow-lg">
-                <a href="">Check-Out</a>
-            </button>
+
+            <div class="mt-12">
+                <button class="w-full bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold py-3 rounded-lg transition-all shadow-lg active:scale-95">
+                    Check-Out Properties
+                </button>
+            </div>
+        </div>
+
+        <div class="p-10 md:w-3/5 bg-white">
+            <h1 class="text-2xl font-bold text-slate-800 mb-6">Send us a Message</h1>
+            
+            <form action="#" class="space-y-5">
+                <div>
+                    <label for="name" class="block text-sm font-semibold text-slate-600 mb-1">Full Name</label>
+                    <input type="text" id="name" name="name" 
+                        class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all" 
+                        placeholder="Demarco" required>
+                </div>
+
+                <div>
+                    <label for="email" class="block text-sm font-semibold text-slate-600 mb-1">Email Address</label>
+                    <input type="email" id="email" name="email" 
+                        class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all" 
+                        placeholder="email@example.com" required>
+                </div>
+
+                <div>
+                    <label for="message" class="block text-sm font-semibold text-slate-600 mb-1">Your Message</label>
+                    <textarea id="message" name="message" rows="4" 
+                        class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all resize-none" 
+                        placeholder="How can we help you?" required></textarea>
+                </div>
+
+                <button type="submit" 
+                    class="w-full bg-slate-800 hover:bg-slate-900 text-white font-bold py-4 rounded-lg transition-all shadow-md hover:shadow-xl active:scale-[0.98]">
+                    Submit Request
+                </button>
+            </form>
         </div>
     </div>
-    
+
 </body>
 </html>
